@@ -1,0 +1,23 @@
+//global styles
+@import 'global';
+@import 'mixin';
+@import 'form';
+@import 'table';
+
+
+//partial styles
+@import 'navbar';
+@import 'footer';
+@import 'home';
+@import 'project';
+@import 'product';
+@import 'admin_aside';
+@import 'messages';
+
+
+//main styles
+@import 'hero';
+@import 'about';
+@import 'contact';
+@import 'service';
+@import 'admin';

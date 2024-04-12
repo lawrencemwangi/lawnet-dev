@@ -1,0 +1,41 @@
+.about_container{
+    .about_content{
+        @include grid(2);
+        padding: 1em 0;
+        margin: 0 0 3.5em;
+
+        h3{
+            padding: 0.3em 0;
+        }
+
+        p{
+            font-size: 1.2em;
+        }
+        .about_image{
+            @include flex_center;
+
+            img{
+                height: 55vh;
+                width: 80%;
+            }
+        }
+
+        .founder_images{
+            @include flex_center;
+            flex-direction: column;
+
+            img{
+                width: 50%;
+                height: 55vh;
+                border-radius: 12px;
+            }
+            p{
+                padding: 0.2em 0;
+                font-size: 1.1em;
+                span{
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

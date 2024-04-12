@@ -1,0 +1,26 @@
+.product_items{
+    background:#e6e6e6;
+    padding: 0.3em 0.6em;
+    
+    .product_image{
+        @include flex_center;
+    }
+    h2{
+        text-align: center;
+        padding: 0.3em 0;
+    }
+    p{
+        font-size: 1em;
+    }
+    .product_infor{
+        @include flex_center;
+        justify-content: space-between;
+        padding:0.3em 0.5em;
+        
+        img{
+            width:35px;
+            height:35px;
+        }
+    }
+
+}

@@ -1,0 +1,111 @@
+.navbar_container{
+    @include flex_center;
+    justify-content: space-between;
+    padding: 0 0.9em;
+    box-shadow: 2px 2px 4px $brand-color;
+    height: 10vh;
+    backdrop-filter: blur(4px);
+    position: sticky;
+    left: 0;
+    top:0;
+    z-index: 100;
+
+
+    .logo{
+        @include flex_center;
+        flex-direction: row;
+        gap:0.3em;
+
+        img{
+            border-radius: 50%;
+        }
+        a{
+            font-size: 1.2em;
+            text-decoration: none;
+            color: $brand-color;
+            font-weight: bold;
+        }
+    }
+
+    .nav_links{
+       ul{
+            @include flex-center;
+            flex-direction: row;
+            list-style: none;
+            
+            li{
+                padding: 0 0.5em;
+
+                a{
+                    text-decoration: none;
+                    color: $brand-color;
+                    font-size: 1.1em;
+                    font-weight: bold;
+                    position: relative;
+
+                    &:hover{
+                        color: $accent-color;
+                    }
+                }
+            }
+            .profiles{
+                display: flex;
+                align-items: center;
+                gap:1em;
+    
+                a {
+                    background: #000;
+                    color: #fff;
+                    border-radius: 32px;
+                }
+
+                .profile {
+                    @include flex-center;
+                    padding: 0.3em;
+                    border-radius: 50%;
+                }
+
+                form {
+                    button {
+                        padding: 8px 16px;
+                        border-radius: 32px;
+                        cursor: pointer;
+                        background: red;
+                    }
+                }
+
+                ul {
+                    display: none;
+                }
+                button{
+                    border-radius: 20px;
+                }
+            }
+       }
+    }
+    .burger{
+        display: none;
+        cursor: pointer;
+
+        span{
+            height: 3px;
+            width: 30px;
+            display: block;
+            margin: 0.5em 0;
+            background-color: $brand-color;
+        }
+    }
+}
+
+@media screen and (width <=726px) {
+    .navbar_container{
+        .nav_links{
+            ul{
+                display: none;
+            }
+        }
+        .burger{
+            display: block;
+        }
+    }
+}

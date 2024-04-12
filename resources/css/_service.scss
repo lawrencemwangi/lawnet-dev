@@ -1,0 +1,55 @@
+.service_container{
+    .service_nav{
+        padding: 0.9em;
+        @include flex_center;
+        justify-content: start;
+        gap:0.9em;
+        
+        a{
+           text-decoration: none;
+           color:$secondary-color;
+           background: $brand-color;
+           padding: 0.3em 0.9em;
+           border-radius: 12px 0 12px 0
+        }
+    }
+
+    .service_content{
+        @include grid(3);
+        padding: 0.9em;
+
+        input{
+            padding:0.5em 0.9em;
+            font-size: 1em;
+            position: relative;
+            width: 80%;
+            border-radius: 20px;
+        }
+
+        .btn{
+            width: 85%;
+            @include flex_center;
+            justify-content: right;
+            align-items: end;
+
+            a{
+                padding: 0.5em 0.9em;
+                color:$secondary-color;
+                text-decoration: none;
+                background: $brand-color;
+                border-radius: 16px;
+            }
+        }
+    }
+    .category_content{
+        width: 30%;
+        h2{
+            padding: 0.5em 0;
+        }
+        .input_group{
+            input{
+                margin-bottom: 0.9em;
+            }
+        }
+    }
+}

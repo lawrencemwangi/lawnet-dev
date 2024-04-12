@@ -1,0 +1,28 @@
+.home_container{
+
+    .main_container{
+
+        .project_content{
+            @include grid(4);
+            padding: 0.9em 0; 
+        }
+        .button{
+            @include flex_center;
+            padding: 0.5em 0;
+
+            a{
+                text-decoration: none;
+                color:$secondary-color;
+            }
+        }
+    }
+}
+@media  screen and (width <=726px) {
+    .home_container{
+        .main_container{
+            .project_content{
+                padding:0 4%;
+            }
+        }
+    }
+}

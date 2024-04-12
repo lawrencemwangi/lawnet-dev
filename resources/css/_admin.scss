@@ -1,0 +1,36 @@
+.admin_container{
+    display: flex;
+
+   .admin{
+        width:calc(100% - $asidenav_width);
+        margin-left: 2%;
+        
+        .container{
+            @include grid(5);
+            gap:1em;
+            padding: 0.9em 0.5em;
+
+            .dashboard{
+                background: #cacaca;
+                padding: 0.5em;
+                @include flex_center;
+                flex-direction: row;
+                gap:0.9em;
+                border-radius: 16px;
+                font-size: 1.1em;
+                span,p{
+                    padding: 0.2em 0;
+                    font-weight: 550;
+                }
+                span{
+                    @include flex_center;
+                }
+
+                i{
+                    font-size: 1.3em;
+                }
+
+            }
+        }
+    }
+}
