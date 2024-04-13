@@ -57,7 +57,7 @@
             </div>
 
             <div class="name">
-                <a href="#">{{ Auth::User()->first_name }} {{ Auth::User()->last_name}}</a>
+                <a href="{{ route('profile.edit')}}">{{ Auth::User()->first_name }} {{ Auth::User()->last_name}}</a>
             </div>
 
             <form action="{{ route('logout') }}" method="post">

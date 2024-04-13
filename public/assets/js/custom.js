@@ -145,3 +145,19 @@ document.addEventListener("DOMContentLoaded", function () {
         mainProductImage.style.transform = "translate(0%, 0%) scale(1)";
     });
 });
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById('latest_password');
+    const deleteButton = document.getElementById('deleteButton');
+
+    passwordInput.addEventListener('input', function() {
+        if (passwordInput.value.trim() !== '') {
+            deleteButton.style.display = 'inline';
+        } else {
+            deleteButton.style.display = 'none';
+        }
+    });
+});

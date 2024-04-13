@@ -1,0 +1,46 @@
+.main_container{
+    .general_content{
+        padding: 0.9em 0;
+        width: 50%;
+        
+        form{
+            padding: 0.9em 0;
+
+            .group{
+                @include grid(2);
+            }
+
+            .input_group{
+                padding: 0.5em 0;
+
+                input{
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .profile_password{
+        width:50%;
+
+        .input_group{
+            padding:0.6em 0;
+        }
+        button{
+            margin-bottom: 1.5em;
+        }
+    }
+
+    .profile_delete{
+        width: 50%;
+
+        form{
+            p{
+                padding: 0.5em 0;
+            }
+            input{
+                margin: 0.9em 0;
+            }
+        }
+    }
+}

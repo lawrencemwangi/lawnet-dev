@@ -42,7 +42,7 @@ form button {
   font-size: 1em;
   border: none;
   border-radius: 4px;
-  background: #D2691E;
+  background: #000000;
   color: #ffffff;
   cursor: pointer;
 }
@@ -76,6 +76,7 @@ form button {
 
 table {
   padding: 0.9em 0;
+  width: 95%;
 }
 table thead {
   background: #000000;
@@ -83,6 +84,23 @@ table thead {
 }
 table thead th {
   padding: 0.3em 0.9em;
+}
+table tbody tr td {
+  padding: 0.2em;
+  font-weight: 550;
+}
+table tbody tr td .icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+  cursor: pointer;
+}
+table tbody tr td .icons .fa-pencil-alt {
+  color: green;
+}
+table tbody tr td .icons .fa-trash-alt {
+  color: red;
 }
 
 .navbar_container {
@@ -389,7 +407,8 @@ table thead th {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 4.5em 0;
+  align-items: center;
+  margin: 4em 0;
   text-align: center;
 }
 .aside_container .user .image {
@@ -404,11 +423,21 @@ table thead th {
      object-fit: contain;
   background: #fff;
 }
+.aside_container .user .name {
+  display: inline;
+  white-space: nowrap;
+}
+.aside_container .user .name a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: 550;
+  font-size: 1em;
+}
 .aside_container .user p {
   padding: 0.3em 0;
 }
 .aside_container .user button {
-  padding: 0.5em 1.5em;
+  padding: 0.5em 2em;
 }
 .aside_container .user .logout {
   background: red;
@@ -417,6 +446,88 @@ table thead th {
 .aside_container .user .logout a {
   text-decoration: none;
   color: #ffffff;
+}
+
+.alert {
+  padding: 1em;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  top: 10vh;
+  width: 30%;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.alert-danger {
+  background: rgb(235, 4, 4);
+}
+
+.alert-success {
+  background: rgb(2, 168, 29);
+}
+
+.alert-warning {
+  background: rgb(194, 128, 5);
+}
+
+.inline_alert {
+  margin: 0.1em 0 0;
+  font-weight: bold;
+  color: rgb(235, 4, 4);
+}
+
+.inline_alert_success {
+  padding: 0.5em;
+  margin: 0.5em 0;
+  color: rgb(2, 168, 29);
+}
+
+.main_container .general_content {
+  padding: 0.9em 0;
+  width: 50%;
+}
+.main_container .general_content form {
+  padding: 0.9em 0;
+}
+.main_container .general_content form .group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: start;
+  justify-content: start;
+  gap: 0.9em;
+}
+.main_container .general_content form .input_group {
+  padding: 0.5em 0;
+  font-weight: 660;
+}
+.main_container .general_content form .input_group input {
+  font-weight: 500;
+}
+.main_container .profile_password {
+  width: 50%;
+  margin-bottom: 1em;
+}
+.main_container .profile_password .group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: start;
+  justify-content: start;
+  gap: 0.9em;
+  margin: 0.5em 0;
+}
+.main_container .profile_delete {
+  width: 50%;
+}
+.main_container .profile_delete form p {
+  padding: 0.5em 0;
+}
+.main_container .profile_delete form input {
+  margin: 0.9em 0;
 }
 
 .hero_container {
@@ -621,16 +732,62 @@ table thead th {
     font-size: 1.2em;
   }
 }
+.service_container .service_nav {
+  padding: 0.9em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: start;
+  gap: 0.9em;
+}
+.service_container .service_nav a {
+  text-decoration: none;
+  color: #ffffff;
+  background: #000000;
+  padding: 0.3em 0.9em;
+  border-radius: 12px 0 12px 0;
+}
 .service_container .service_content {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5em;
-  gap: 2em;
+  padding: 0.9em;
 }
 @media screen and (width >= 726px) {
   .service_container .service_content {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+.service_container .service_content input {
+  padding: 0.5em 0.9em;
+  font-size: 1em;
+  position: relative;
+  width: 80%;
+  border-radius: 20px;
+}
+.service_container .service_content .btn {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: right;
+  align-items: end;
+}
+.service_container .service_content .btn a {
+  padding: 0.5em 0.9em;
+  color: #ffffff;
+  text-decoration: none;
+  background: #000000;
+  border-radius: 16px;
+}
+.service_container .category_content {
+  width: 30%;
+}
+.service_container .category_content h2 {
+  padding: 0.5em 0;
+}
+.service_container .category_content .input_group input {
+  margin-bottom: 0.9em;
 }
 
 .admin_container {
@@ -638,23 +795,23 @@ table thead th {
 }
 .admin_container .admin {
   width: 85%;
-  margin-left: 1.5%;
+  margin-left: 2%;
 }
 .admin_container .admin .container {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5em;
   gap: 1em;
-  padding: 0.9em 0.5em;
+  padding: 0.9em 1em;
 }
 @media screen and (width >= 726px) {
   .admin_container .admin .container {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 .admin_container .admin .container .dashboard {
   background: #cacaca;
-  padding: 0.5em;
+  padding: 0.1em;
   display: flex;
   justify-content: center;
   align-items: center;

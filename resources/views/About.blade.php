@@ -15,13 +15,13 @@
                     </p>
                 </div>
                 <div class="about_image">
-                    <img src="{{ asset('/images/office.png')}}" alt="Office Image">
+                    <img src="{{ asset('assets/images/office.png')}}" alt="Office Image">
                 </div>
             </div>
             
             <div class="about_content">
                 <div class="founder_images">
-                    <img src="{{ asset('/images/mwangi.jpg')}}" alt="CEO Image">
+                    <img src="{{ asset('assets/images/mwangi.jpg')}}" alt="CEO Image">
                     <p>Lawrence Mwangi <span>CEO & Founder</span></p>
                     <p>Lawnet Developers</p>
 
