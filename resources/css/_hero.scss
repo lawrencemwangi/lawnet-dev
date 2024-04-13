@@ -41,10 +41,11 @@
 
 @media screen and (width <=726px) {
     .hero_container{
-        background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)),url(../../public/images/dell.jpg);
+        background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../../public/assets/images/dell.jpg);
         background-size:cover;
         background-repeat: no-repeat;
         background-position: center;
+        background-attachment: fixed;
         height: 65vh;
         color:$secondary-color;
 

@@ -5,7 +5,7 @@
             <a href="{{ route('home') }}">{{ config('app.name')}}</a>
         </div>
 
-        <div class="nav_links">
+        <div class="nav_links" id="navLinks">
             <ul>
                 @if(Auth::user() && Auth::user()->user_level == 2)
                 <li>
@@ -21,6 +21,8 @@
                 <li><a href="{{ route('service') }} ">Service</a></li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
+                <li><a href="#"><i class="fas fa-cart-plus"><span>0</span></i></a></li>
+                
                 <li class="profiles">
                     @if(Auth::user())
                     <a href="{{ route('profile.edit') }}" class="profile">
@@ -37,7 +39,7 @@
             </ul>
         </div>
         
-        <div class="burger">
+        <div class="burger" id="burgerIcon">
             <span></span>
             <span></span>
             <span></span>

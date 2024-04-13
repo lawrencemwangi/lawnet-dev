@@ -46,7 +46,20 @@
                     &:hover{
                         color: $accent-color;
                     }
+                    
+                .fa-cart-plus{
+                    font-size: 1.1em;
+                    padding: 0 0.3em;
+
+                    span{
+                        position: absolute;
+                        top:-0.3em;
+                        color:$price-color;
+                    }
                 }
+
+                }
+
             }
             .profiles{
                 display: flex;
@@ -54,8 +67,8 @@
                 gap:1em;
     
                 a {
-                    background: #000;
-                    color: #fff;
+                    border: 2px solid $brand-color;
+                    color: $brand-color;
                     border-radius: 32px;
                 }
 
@@ -68,7 +81,7 @@
                 form {
                     button {
                         padding: 8px 16px;
-                        border-radius: 32px;
+                        border-radius: 20px !important;
                         cursor: pointer;
                         background: red;
                     }
@@ -100,12 +113,69 @@
 @media screen and (width <=726px) {
     .navbar_container{
         .nav_links{
-            ul{
+            ul {
                 display: none;
+                width: 50%;
+                height: 60vh;
+                background:#e3e3e3;
+                position: absolute;
+                flex-direction: column;
+                align-items: flex-end;
+                padding: 0.5em 1em;
+                gap: 1.5em 0;
+                top: 11vh;
+                right: 0.1em;
+
+                li {
+                    width: 80%;
+                    margin: auto;
+                }
+
+                .cart {
+                    span {
+                        position: unset;
+                    }
+                }
+                .profiles{
+                    flex-direction: column;
+                    gap:0.5em;
+
+                    button{
+                        margin: 0.3em 0;
+                        padding: unset;
+                    }
+                }
             }
         }
+             
+        .show {
+            display: block;
+            ul {
+                display: flex;
+            }
+        }
+
+     
+
         .burger{
             display: block;
+        }
+
+        .active_burger {
+            span {
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                &:nth-child(1) {
+                    transform: rotate(-45deg) translate(-7px, 8px);
+                }
+
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(45deg) translate(-7px, -8px);
+                }
+            }
         }
     }
 }

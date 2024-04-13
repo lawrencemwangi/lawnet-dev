@@ -7,31 +7,8 @@
 //     } else modeText.innerText = " Dark Mode ";
 // });
 
-// Main navbar and admin sidenav toggle
-$(document).ready(function () {
-    $("#burgerIcon, #toggle").click(function () {
-        $("#navLinks").toggleClass("show");
-        $("#burgerIcon").toggleClass(
-            "active_burger",
-            $("#navLinks").hasClass("show")
-        );
-    });
 
-    // Toggle the sidebar
-    $(".admin_sidebar .toggle").click(function () {
-        $(".admin_sidebar").toggleClass("close");
-        // Get the current width of the sidebar dynamically
-        const sidebarWidth = $(".admin_sidebar").width();
-        // Calculate the desired margin-left value (width of the sidebar + 1%)
-        const marginLeftValue = `${sidebarWidth + 0.01 * window.innerWidth}px`;
-        // Set the margin-left of .Main based on sidebar state
-        $("#main").css(
-            "margin-left",
-            $(".admin_sidebar").hasClass("close") ? marginLeftValue : "1%"
-        );
-    });
-});
-
+//code for message duration for the system success and fail 
 (function () {
     const alertElements = document.getElementsByClassName("alert");
 
@@ -46,6 +23,8 @@ $(document).ready(function () {
     }
 })();
 
+
+//functionality for search bar for the system
 function searchFunction() {
     // Get the input value
     var input = document.getElementById("myInput");
@@ -67,6 +46,7 @@ function searchFunction() {
     }
 }
 
+// function for sweet alert when deleting items
 function showConfirmationDialog(message, onConfirm) {
     Swal.fire({
         title: "Are you sure?",
@@ -148,7 +128,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+// Main navbar and admin sidenav toggle
+$(document).ready(function () {
+    $("#burgerIcon, #toggle").on('click', function () {
+        $("#navLinks").toggleClass("show");
+        $("#burgerIcon").toggleClass("active_burger", $("#navLinks").hasClass("show"));
+    });
+});
 
+
+
+//Delete button toogle on typing the password 
 document.addEventListener("DOMContentLoaded", function() {
     const passwordInput = document.getElementById('latest_password');
     const deleteButton = document.getElementById('deleteButton');
@@ -161,3 +151,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+

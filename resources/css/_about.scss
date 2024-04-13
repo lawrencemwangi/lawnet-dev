@@ -39,3 +39,20 @@
         }
     }
 }
+
+@media screen and (width <=726px) {
+    .about_container{
+        padding: 0 5%;
+        .about_content{
+            .about_image{
+                display: none;
+            }
+
+            .founder_images{
+                img{
+                    width: 95%;
+                }
+            }
+        }
+    }
+}

@@ -44,3 +44,11 @@
         }
     }
 }
+
+@media screen and (width <=726px) {
+    .main_container{
+        .general_content, .profile_delete ,.profile_password{
+            width: 100%;
+        }
+    }
+}
