@@ -15,4 +15,9 @@ class Message extends Model
         'email',
         'message'
     ];
+
+    public function message()
+    {
+        return $this->hasmany(Message::class);
+    }
 }

@@ -10,13 +10,13 @@
         margin-left: 2%;
         
         .container{
-            @include grid(5);
+            @include grid(6);
             gap:1em;
-            padding: 0.9em 0.5em;
+            padding: 0.9em 1em;
 
             .dashboard{
                 background: #cacaca;
-                padding: 0.5em;
+                padding: 0.1em;
                 @include flex_center;
                 flex-direction: row;
                 gap:0.9em;

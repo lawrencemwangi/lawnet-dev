@@ -22,6 +22,9 @@
                         <th>Category</th>
                         <th>Description</th>
                         <th>Price(KSH)</th>
+                        <th>Featured</th>
+                        <th>Duration</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </thead>
                     <tbody class="searchable">
@@ -31,6 +34,9 @@
                             <td>website</td>
                             <td>It' a webiste for business..</td>
                             <td>500.00</td>
+                            <td>Yes</td>
+                            <td>12 weeks</td>
+                            <td>Visible</td>
                             <td>
                                 <div class="icons">
                                     <a href="#"><i class="fas fa-trash-alt"></i></a>

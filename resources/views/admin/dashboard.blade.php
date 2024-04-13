@@ -8,7 +8,7 @@
                     <i class="fas fa-users"></i>
                     <div class="content">
                         <p>Users</p>
-                        <span>30</span>
+                        <span>{{ $count_users }}</span>
                     </div>
                 </div>
 
@@ -37,10 +37,18 @@
                 </div>
 
                 <div class="dashboard">
+                    <i class="fas fa-cogs"></i>
+                    <div class="content">
+                        <p>Categories</p>
+                        <span>{{ $count_categories }}</span>
+                    </div>
+                </div>
+
+                <div class="dashboard">
                     <i class="fas fa-comments"></i>
                     <div class="content">
                         <p>Messages</p>
-                        <span>30</span>
+                        <span>{{ $count_messages }}</span>
                     </div>
                 </div>
             </div> 
