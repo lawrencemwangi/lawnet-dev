@@ -1,3 +1,36 @@
+// modeSwitch.addEventListener("click", () => {
+//     body.classList.toggle("dark");
+//     //   document.querySelector(".mode-text").innertext=""
+
+//     if (body.classList.contains("dark")) {
+//         modeText.innerText = " Light Mode ";
+//     } else modeText.innerText = " Dark Mode ";
+// });
+
+// Main navbar and admin sidenav toggle
+$(document).ready(function () {
+    $("#burgerIcon, #toggle").click(function () {
+        $("#navLinks").toggleClass("show");
+        $("#burgerIcon").toggleClass(
+            "active_burger",
+            $("#navLinks").hasClass("show")
+        );
+    });
+
+    // Toggle the sidebar
+    $(".admin_sidebar .toggle").click(function () {
+        $(".admin_sidebar").toggleClass("close");
+        // Get the current width of the sidebar dynamically
+        const sidebarWidth = $(".admin_sidebar").width();
+        // Calculate the desired margin-left value (width of the sidebar + 1%)
+        const marginLeftValue = `${sidebarWidth + 0.01 * window.innerWidth}px`;
+        // Set the margin-left of .Main based on sidebar state
+        $("#main").css(
+            "margin-left",
+            $(".admin_sidebar").hasClass("close") ? marginLeftValue : "1%"
+        );
+    });
+});
 
 (function () {
     const alertElements = document.getElementsByClassName("alert");
@@ -33,3 +66,82 @@ function searchFunction() {
         }
     }
 }
+
+function showConfirmationDialog(message, onConfirm) {
+    Swal.fire({
+        title: "Are you sure?",
+        text: message,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete!",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            onConfirm();
+        }
+    });
+}
+
+// For forms: deleteItem(itemId, itemName);
+// For links: deleteItem(itemId, itemName, url);
+
+function deleteItem(itemId, itemName, url = null) {
+    const message = `This ${itemName} will be deleted permanently!`;
+
+    // Show a confirmation dialog
+    showConfirmationDialog(message, () => {
+        const formId = `deleteForm_${itemId}`;
+        const form = document.getElementById(formId);
+
+        if (form) {
+            form.submit();
+        }
+    });
+}
+
+// Product Details Images Slideshow
+
+document.addEventListener("DOMContentLoaded", function () {
+    const mainProductImage = document.querySelector(".main_product_image img");
+    const otherImagesContainer = document.querySelector(".other_images");
+
+    otherImagesContainer.querySelectorAll("img").forEach((thumbnail) => {
+        thumbnail.addEventListener("click", (event) => {
+            // Remove active class from all thumbnails
+            otherImagesContainer.querySelectorAll("img").forEach((img) => {
+                img.classList.remove("active");
+            });
+
+            // Add active class to the clicked thumbnail
+            event.target.classList.add("active");
+
+            // Change the source of the main product image with a zoom effect
+            mainProductImage.src = event.target.src;
+        });
+    });
+
+    // Add the zoom effect on hover for the main product image
+    mainProductImage.addEventListener("mousemove", (e) => {
+        const containerWidth = mainProductImage.offsetWidth;
+        const containerHeight = mainProductImage.offsetHeight;
+
+        const image = mainProductImage;
+        const imageWidth = image.offsetWidth;
+        const imageHeight = image.offsetHeight;
+
+        const x = e.pageX - mainProductImage.offsetLeft;
+        const y = e.pageY - mainProductImage.offsetTop;
+
+        const translateX = (containerWidth / 2 - x) * 2;
+        const translateY = (containerHeight / 2 - y) * 2;
+
+        const scale = 3;
+
+        image.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    });
+
+    mainProductImage.addEventListener("mouseleave", () => {
+        mainProductImage.style.transform = "translate(0%, 0%) scale(1)";
+    });
+});

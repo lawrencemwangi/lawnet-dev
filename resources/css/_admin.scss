@@ -1,6 +1,10 @@
 .admin_container{
     display: flex;
 
+    // .alert{
+    //     top:0;
+    // }
+
    .admin{
         width:calc(100% - $asidenav_width);
         margin-left: 2%;

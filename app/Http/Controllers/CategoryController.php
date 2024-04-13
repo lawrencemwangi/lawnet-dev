@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::latest()->get();
-        return view('admin.services.list_category', compact('categories'));
+        return view('admin.services.list_category', compact('categories') );
     }
 
     /**
@@ -39,9 +39,9 @@ class CategoryController extends Controller
 
         Category::create($validated);
 
-        return redirect()->route('category.index')->with('success',[
+        return redirect()->route('category.index')->with('success', [
             'message' => 'Category added successfully',
-            'duration' => $this->alert_message_duration
+            'duration' => $this->alert_message_duration,
         ]);
     }
 
@@ -58,7 +58,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.services.update_category', compact('category') );
     }
 
     /**
@@ -66,7 +66,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:80|unique:categories,title,' . $category->id,
+        ]);
+
+        $validated['title'] = str::lower($validated['title']);
+        $validated['slug'] = str::slug($validated['title']);
+
+        $category->update($validated);  
+        
+        return redirect()->route('category.index')->with('success',[
+            'message' => 'Category updated successfully',
+            'duration' => $this->alert_message_duration,
+        ]);
     }
 
     /**
@@ -74,6 +86,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('category.index')->with('success',[
+            'message' => 'Category deleted successfully',
+            'duration' => $this->alert_message_duration,
+        ]);
     }
 }

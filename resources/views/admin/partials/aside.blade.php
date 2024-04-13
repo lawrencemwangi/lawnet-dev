@@ -2,7 +2,7 @@
     <div class="aside_container">
         <div class="aside_logo">
             <img src="{{ asset('assets/images/dell.jpg') }}" width="35px" height="40px" alt="logo">
-            <a href="{{ route('home')}}">Lawnet Dev</a>
+            <a href="{{ route('home')}}" target="_blank">Lawnet Dev</a>
         </div>
 
         <div class="aside_links">

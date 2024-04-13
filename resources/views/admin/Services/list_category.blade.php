@@ -27,8 +27,16 @@
                             <td>{{ $category->slug }}</td>
                             <td>
                                 <div class="icons">
-                                    <a href="#"><i class="fas fa-trash-alt"></i></a>
-                                    <a href="#"> <i class="fas fa-pencil-alt"></i></a>
+                                    <a href="{{ route('category.edit',['category' => $category]) }}"> <i class="fas fa-pencil-alt"></i></a>
+
+                                    <form id="deleteForm_{{ $category->id }}" action="{{ route('category.destroy', ['category' => $category->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+    
+                                        <a href="javascript:void(0);" onclick="deleteItem({{ $category->id }}, 'category');">
+                                            <i class="fas fa-trash-alt delete"></i>
+                                        </a>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

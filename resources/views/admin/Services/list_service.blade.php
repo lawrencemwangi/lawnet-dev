@@ -12,7 +12,7 @@
                     @include('admin.partials.search')
 
                     <div class="btn">
-                        <button type="submit">Add New</button>               
+                        <a href="{{ route('service.create') }}">Add New</a>
                     </div>
                 </div>
                 <table>
@@ -33,8 +33,8 @@
                             <td>500.00</td>
                             <td>
                                 <div class="icons">
-                                    <i class="fas fa-trash-alt"></i>
-                                    <i class="fas fa-pencil-alt"></i>
+                                    <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="#"><i class="fas fa-pencil-alt"></i></a>
                                 </div>
                             </td>
                         </tr>
