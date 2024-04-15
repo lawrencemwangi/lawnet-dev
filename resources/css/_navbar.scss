@@ -92,9 +92,13 @@
                 }
                 button{
                     border-radius: 20px;
+                    a{
+                        color:$secondary-color;
+                    }
                 }
             }
        }
+
     }
     .burger{
         display: none;
@@ -136,6 +140,7 @@
                         position: unset;
                     }
                 }
+
                 .profiles{
                     flex-direction: column;
                     gap:0.5em;
@@ -147,15 +152,13 @@
                 }
             }
         }
-             
-        .show {
+
+        .show{
             display: block;
             ul {
                 display: flex;
             }
         }
-
-     
 
         .burger{
             display: block;

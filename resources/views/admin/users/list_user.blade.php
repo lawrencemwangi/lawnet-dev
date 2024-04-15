@@ -22,8 +22,8 @@
                         <th>Action</th>
                     </thead>
 
-                        <tbody class="searchable" @foreach ($users as $user)>
-
+                        <tbody class="searchable">
+                            @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->last_name }}</td>

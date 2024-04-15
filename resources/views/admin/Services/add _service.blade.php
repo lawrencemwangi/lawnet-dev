@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="input_group">
-                                <label for="discount_price">discount Price</label>
+                                <label for="discount_price">Discount Price</label>
                                 <input type="text" name="discount_price"  id="discount_price" value="{{ old('discount_price')}}" autofocus>
                                 <span class="inline_alert">{{ $errors->first('discount_price') }}</span>
                             </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -17,6 +18,7 @@ Route::get('/about', [HomeController::class, 'AboutPage'])->name('about');
 Route::get('/service', [HomeController::class, 'ServicePage'])->name('service');
 Route::get('/blog', [HomeController::class, 'BlogPage'])->name('blog');
 Route::get('/contact', [HomeController::class, 'ContactPage'])->name('contact');
+Route::resource('/cart', CartController::class);
 
 
 Route::middleware('auth')->group(function () {

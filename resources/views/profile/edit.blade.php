@@ -80,7 +80,7 @@
                     @csrf
                     @method('delete')
 
-                    <p>if you want to delete you account enter the password. We will miss you our client and hope to see you back !!</p>
+                    <p>if you want to delete you account enter the password. We will miss you our client and hope to see you back soon !!</p>
                     <input type="password" name="latest_password" id="latest_password" placeholder="Enter Your Password">
                     <span class="inline_alert">{{ $errors->first('password') }}</span>
 
@@ -89,4 +89,6 @@
             </div>
         </div>
     </div>
+
+    @include('partials.footer')
 </x-app-layout>

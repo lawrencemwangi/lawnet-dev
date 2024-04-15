@@ -21,7 +21,8 @@
                         <th>Slug</th>
                         <th>Action</th>
                     </thead>
-                    <tbody class="searchable" @foreach ($categories as $category) >         
+                    <tbody class="searchable">    
+                        @foreach ($categories as $category)     
                         <tr>
                             <td>{{ $category->title }}</td>
                             <td>{{ $category->slug }}</td>

@@ -17,7 +17,8 @@
                         <th>Message</th>
                         <th>Action</th>
                     </thead>
-                    <tbody  class="searchable" @foreach ($messages as $message)>
+                    <tbody  class="searchable">
+                        @foreach ($messages as $message)
                         <tr>
                             <td>{{ $message->first_name }}</td>
                             <td>{{ $message->last_name }}</td>
