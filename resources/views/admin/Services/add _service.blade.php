@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="input_group">
-                                <label for="in_stock">In Stock</label>
+                                <label for="in_stock">Visibility</label>
                                 <div class="custom_radio_buttons">
                                     <label>
                                         <input class="option_radio" type="radio" name="in_stock" id="in_stock" value="1" {{ old('in_stock') == '1' ? 'checked' : '' }}>

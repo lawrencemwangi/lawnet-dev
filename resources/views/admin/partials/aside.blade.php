@@ -29,7 +29,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('list_project') }}">
+                    <a href="{{ route('projects.index') }}">
                         <i class="fas fa-tasks"></i>
                         <span>Projects</span>
                     </a>

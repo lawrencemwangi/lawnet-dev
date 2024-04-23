@@ -13,3 +13,8 @@
         grid-template-columns: repeat($columns, 1fr);
     }
 }
+
+
+@mixin width(){
+    width: 50%;
+}

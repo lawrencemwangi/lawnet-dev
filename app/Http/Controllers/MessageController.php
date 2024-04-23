@@ -14,7 +14,6 @@ class MessageController extends Controller
     public function index()
     {
         $messages = Message::latest()->get();
-        $cleanedData = preg_replace('/[[:^print:]]/', '', $messages);
         return view('admin.messages.list_messages', compact('messages'));
     }
 

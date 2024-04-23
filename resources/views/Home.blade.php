@@ -26,11 +26,11 @@
             <h1>Our Projects</h1>
 
             <div class="project_content">
-                @include('partials.Project')
-                @include('partials.Project')
-                @include('partials.Project')
-                @include('partials.Project')
+                @foreach ($projects as $project)
+                    @include('partials.Project') 
+                @endforeach
             </div>
+
             <div class="button">
                 <button type="submit">
                     <a href="{{ route('service')}}">Explore More</a>

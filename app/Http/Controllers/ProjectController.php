@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -11,7 +12,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.list_project');
+        $projects = Project::all();
+        return view('admin.projects.list_project', compact('projects'));
     }
 
     /**
@@ -19,7 +21,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.add_project');
     }
 
     /**
@@ -27,13 +29,33 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated_data = $request->validate([
+            'title' => 'required|unique:projects',
+            'iframe' => 'required|url',
+            'description' => 'required|string|',
+            'link' => 'required|url',
+        ]);
+
+        $project = new Project;
+
+        $project->title = $validated_data['title'];
+        $project->iframe = $validated_data['iframe'];
+        $project->link = $validated_data['link'];
+        $project->description = $validated_data['description'];
+
+        $project->save();
+
+        return redirect()->route('projects.index')->with('success', [
+            'message' => 'Project Created Successfully',
+            'duration' => $this->alert_message_duration
+        ]);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
         //
     }
@@ -41,7 +63,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
         //
     }
@@ -49,7 +71,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Project $project)
     {
         //
     }
@@ -57,7 +79,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
         //
     }

@@ -41,6 +41,8 @@ Route::middleware('auth', 'admin')->group(function(){
 
     Route::resource('/admin/service', ServiceController::class);
 
+    Route::resource('/admin/projects', ProjectController::class);
+
     Route::resource('/admin/user', UserController::class);
 });
 

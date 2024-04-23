@@ -1,8 +1,20 @@
 .project_container{
+    .project_content{
+        @include width;
+
+        form{
+            padding: 0.9em 0;
+            .input_group{
+                padding:0.5em 0;
+            }
+        }
+    }
+
     .project_item{
         box-shadow: 2px 2px 3px $brand-color;
         border-radius: 16px;
-        padding: 0.3em;
+        padding: 0.5em 0.9em;
+
         img{
             width: 100%;
             height: 35vh;
@@ -11,6 +23,26 @@
         p{
             font-size: 1.1em;
             padding:0.5em 0;
+        }
+        .project_btn{
+            @include flex_center;
+
+            button{
+                background:transparent;
+                border: 1px solid $primary-color;
+                padding:0.5em 1.5em ;
+                border-radius: 24px;
+
+                a{
+                    text-decoration: none;
+                    color:$primary-color;
+                    font-size: 1.1em;
+                }
+
+                &:hover{
+                    background:$accent-color;
+                }
+            }
         }
         .btn{
             @include flex_center;

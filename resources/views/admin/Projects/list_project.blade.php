@@ -9,26 +9,26 @@
                     @include('admin.partials.search')
 
                     <div class="btn">
-                        <button type="submit">Add New</button>               
+                        <a href="{{ route('projects.create') }}">Add New</a>
                     </div>
                 </div>
 
                 <table>
                     <thead>
                         <th>Title</th>
-                        <th>Slug</th>
-                        <th>Category</th>
+                        <th>Iframe</th>
                         <th>Description</th>
-                        <th>Price(KSH)</th>
+                        <th>View Link</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
+                        @foreach ($projects as $project)
+                            
                         <tr>
-                            <td>Web design</td>
-                            <td>web-design</td>
-                            <td>website</td>
-                            <td>It' a webiste for business..</td>
-                            <td>500.00</td>
+                            <td>{{ $project->title }}</td>
+                            <td>{{ $project->iframe }}</td>
+                            <td>{{ $project->description }}</td>
+                            <td>{{ $project->link }}</td>
                             <td>
                                 <div class="icons">
                                     <i class="fas fa-trash-alt"></i>
@@ -36,6 +36,8 @@
                                 </div>
                             </td>
                         </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>

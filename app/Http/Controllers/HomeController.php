@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,8 @@ class HomeController extends Controller
 
     public function Homepage()
     {
-        return view('home');
+        $projects = Project::all();
+        return view('home', compact('projects'));
     }
 
     public function AboutPage()
