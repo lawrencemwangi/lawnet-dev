@@ -15,4 +15,9 @@ class Project extends Model
         'description',
         'link'
     ];
+
+    public function Project()
+    {
+        return $this->hasMany(Projectr::class);
+    }
 }

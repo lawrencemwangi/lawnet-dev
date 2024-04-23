@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Category;
+use App\Models\Project;
 use App\Models\User;
 
 class DashboardController extends Controller
@@ -13,12 +14,14 @@ class DashboardController extends Controller
     {
         $count_messages = Message::all()->count();
         $count_categories = Category::all()->count();
+        $count_project = Project::all()->count();
         $count_users = User::all()->count();
 
 
         return view('admin/dashboard', compact(
             'count_messages',
             'count_categories',
+            'count_project',
             'count_users'
         ));
     }

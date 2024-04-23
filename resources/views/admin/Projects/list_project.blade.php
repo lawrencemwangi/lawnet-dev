@@ -31,8 +31,12 @@
                             <td>{{ $project->link }}</td>
                             <td>
                                 <div class="icons">
-                                    <i class="fas fa-trash-alt"></i>
-                                    <i class="fas fa-pencil-alt"></i>
+                                    <a href="{{ route('projects.edit',['project' => $project]) }}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

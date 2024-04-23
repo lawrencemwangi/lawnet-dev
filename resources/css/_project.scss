@@ -22,10 +22,11 @@
         }
         p{
             font-size: 1.1em;
-            padding:0.5em 0;
+            padding:0.9em 0;
         }
         .project_btn{
             @include flex_center;
+            padding: 0.9em 0;
 
             button{
                 background:transparent;

@@ -16,7 +16,7 @@
                     <i class="fas fa-laptop-code"></i>
                     <div class="content">
                         <p>projects</p>
-                        <span>30</span>
+                        <span>{{ $count_project }}</span>
                     </div>
                 </div>
 

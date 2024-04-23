@@ -65,7 +65,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.update_project',compact('project'));
     }
 
     /**
@@ -73,7 +73,19 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $validated_data = $request->validate([
+            'title' => 'required|string|max:80|unique:projects,title,' . $project->id,
+            'iframe' => 'required|url',
+            'link' => 'required|url',
+            'description' => 'required|string', // Change 'text' to 'string'
+        ]);
+  
+        $project ->update($validated_data);
+
+        return redirect()->route('projects.index')->with('success',[
+            'message' => 'Project Updated Successfully',
+            'duration' => $this->alert_message_duration
+        ]);
     }
 
     /**
