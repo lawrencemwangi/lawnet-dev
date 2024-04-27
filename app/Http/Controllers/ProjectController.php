@@ -77,7 +77,7 @@ class ProjectController extends Controller
             'title' => 'required|string|max:80|unique:projects,title,' . $project->id,
             'iframe' => 'required|url',
             'link' => 'required|url',
-            'description' => 'required|string', // Change 'text' to 'string'
+            'description' => 'required|string',
         ]);
   
         $project ->update($validated_data);

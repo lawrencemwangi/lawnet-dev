@@ -13,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::get()->all();
-        return view('admin.users.list_user', compact('users'));
+        return view('admin.users.list_user',compact('users'));
     }
 
     /**
@@ -35,7 +35,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show( User $user)
     {
         //
     }
@@ -43,23 +43,33 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.update_user',compact('user') );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'status' => 'required|in:0,1',
+            'user_level' => 'required|in:0,1'
+        ]);
+
+        $user->update($validated);
+
+        return redirect()->route('user.index')->with('success', [
+            'message' => 'User details Update successfully',
+            'duration' =>$this->$alert_message_duration
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
     }

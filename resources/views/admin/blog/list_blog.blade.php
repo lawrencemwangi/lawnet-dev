@@ -9,7 +9,7 @@
                     @include('admin.partials.search')
                     
                     <div class="btn">
-                        <button type="submit">Add New</button>               
+                        <a href="{{ route('blog.create') }}">Add New</a>
                     </div>
                 </div>
                 
@@ -29,8 +29,12 @@
                             <td>It' a webiste for business..</td>
                             <td>
                                 <div class="icons">
-                                    <i class="fas fa-trash-alt"></i>
-                                    <i class="fas fa-pencil-alt"></i>
+                                    <a href="#">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

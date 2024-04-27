@@ -24,7 +24,7 @@
                     <i class="fas fa-wrench"></i> 
                     <div class="content">
                         <p>Services</p>
-                        <span>30</span>
+                        <span>{{ $count_services }}</span>
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                     <i class="fas fa-blog"></i>
                     <div class="content">
                         <p>Blogs</p>
-                        <span>30</span>
+                        <span>{{ $count_blogs }}</span>
                     </div>
                 </div>
 

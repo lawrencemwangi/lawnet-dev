@@ -1,0 +1,12 @@
+.blog_container{
+    padding: 0.5em 0;
+
+    .blog_content{
+        @include width;
+        form{
+            .input_group{
+                padding: 0.5em 0;
+            }
+        }
+    }
+}

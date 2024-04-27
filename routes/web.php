@@ -31,8 +31,6 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth', 'admin')->group(function(){
     Route::get('/admin/dashboard', [DashboardController::class, 'admin_dashboard'])->name('admin_dashboard');
 
-    Route::get('/admin/project', [ProjectController::class, 'index'])->name('list_project');
-
     Route::resource('/admin/blog', BlogController::class);
 
     Route::resource('/admin/message', MessageController::class);

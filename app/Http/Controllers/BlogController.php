@@ -20,7 +20,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blog.add_blog');
     }
 
     /**
@@ -28,7 +28,9 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+
+        ]);
     }
 
     /**

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="aside_container">
         <div class="aside_logo">
-            <img src="{{ asset('assets/images/dell.jpg') }}" width="35px" height="40px" alt="logo">
+            <img src="{{ asset('assets/images/dell.jpg') }}" width="40px" height="40px" alt="logo">
             <a href="{{ route('home')}}" target="_blank">Lawnet Dev</a>
         </div>
 

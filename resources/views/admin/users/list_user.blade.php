@@ -34,7 +34,9 @@
 
                                 <td>
                                     <div class="icons">
-                                        <i class="fas fa-pencil-alt"></i>
+                                        <a href="{{ route('user.edit', ['user' => $user]) }}">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
