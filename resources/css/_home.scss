@@ -4,7 +4,7 @@
 
         .project_content{
             @include grid(4);
-            padding: 0.9em 0; 
+            padding: 1.2em 0; 
         }
         .button{
             @include flex_center;

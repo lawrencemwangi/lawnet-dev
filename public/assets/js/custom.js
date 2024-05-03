@@ -80,59 +80,15 @@ function deleteItem(itemId, itemName, url = null) {
     });
 }
 
-// Product Details Images Slideshow
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const mainProductImage = document.querySelector(".main_product_image img");
-//     const otherImagesContainer = document.querySelector(".other_images");
-
-//     otherImagesContainer.querySelectorAll("img").forEach((thumbnail) => {
-//         thumbnail.addEventListener("click", (event) => {
-//             // Remove active class from all thumbnails
-//             otherImagesContainer.querySelectorAll("img").forEach((img) => {
-//                 img.classList.remove("active");
-//             });
-
-//             // Add active class to the clicked thumbnail
-//             event.target.classList.add("active");
-
-//             // Change the source of the main product image with a zoom effect
-//             mainProductImage.src = event.target.src;
-//         });
-//     });
-
-//     // Add the zoom effect on hover for the main product image
-//     mainProductImage.addEventListener("mousemove", (e) => {
-//         const containerWidth = mainProductImage.offsetWidth;
-//         const containerHeight = mainProductImage.offsetHeight;
-
-//         const image = mainProductImage;
-//         const imageWidth = image.offsetWidth;
-//         const imageHeight = image.offsetHeight;
-
-//         const x = e.pageX - mainProductImage.offsetLeft;
-//         const y = e.pageY - mainProductImage.offsetTop;
-
-//         const translateX = (containerWidth / 2 - x) * 2;
-//         const translateY = (containerHeight / 2 - y) * 2;
-
-//         const scale = 3;
-
-//         image.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-//     });
-
-//     mainProductImage.addEventListener("mouseleave", () => {
-//         mainProductImage.style.transform = "translate(0%, 0%) scale(1)";
-//     });
-// });
-
-
 
 // Main navbar and admin sidenav toggle
 $(document).ready(function () {
-    $("#burgerIcon, #toggle").click (function () {
+    $("#burgerIcon, #toggle").click(function () {
         $("#navLinks").toggleClass("show");
-        $("#burgerIcon").toggleClass("active_burger", $("#navLinks").hasClass("show"));
+        $("#burgerIcon").toggleClass(
+            "active_burger",
+            $("#navLinks").hasClass("show")
+        );
     });
 });
 
@@ -154,3 +110,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+//Blog part for the paragraph
+
+function toggleContent(blogId) {
+    var description = document.getElementById('description_' + blogId);
+    var moreContent = document.getElementById('moreContent_' + blogId);
+    var a = document.querySelector('a[data-blog-id="' + blogId + '"]');
+
+    if (moreContent.style.display === 'none') {
+        moreContent.style.display = 'inline';
+        description.style.display = 'none';
+        a.textContent = 'Show Less';
+    } else {
+        moreContent.style.display = 'none';
+        description.style.display = 'inline';
+        a.textContent = 'Learn More';
+    }
+}

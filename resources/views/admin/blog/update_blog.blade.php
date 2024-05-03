@@ -5,16 +5,12 @@
         <div class="admin">
             <div class="blog_container">
                 <div class="blog_content">
-                    <h1>Add Blog</h1>
+                    <h1>Update Blog</h1>
 
-                    <form action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('POST')
-
-                        <div class="input_gruop">
+                    <form action="{{ route('blog.update', ['blog' => $blog ]) }}" method="post">
+                        <div class="input_group">
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title" value="{{ old('title') }}">
-                            <span class="inline_alert">{{ $errors->first('title') }}</span>
                         </div>
 
                         <div class="input_group">
@@ -32,17 +28,8 @@
 
                         <div class="input_group">
                             <label for="description">Description</label>
-                            <textarea name="description" id="description" cols="7" rows="5">{{ old('description') }}</textarea>
-                            <span class="inline_alert">{{ $errors->first('description') }}</span>
+                            <textarea name="description" id="description" cols="7" rows="10">{{ old('description') }}</textarea>
                         </div>
-
-                        <div class="input_group">
-                            <label for="description">Select an images:</label>
-                            <input type="file" name="image"  id="image" accept="image/*" value="{{ old('image') }}">
-                            <span class="inline_alert">{{ $errors->first('image') }}</span>
-                        </div>
-
-                        <button type="submit">Save</button>
                     </form>
                 </div>
             </div>

@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="input_container">
-        <ul>
+        {{-- <ul>
             @foreach($errors as $error)
             
                 <li>{{ $error }}</li>
             @endforeach
-        </ul>
+        </ul> --}}
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -31,7 +31,7 @@
 
             <div class="input_group">
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="{{ old('email')}}" required>
+                <input type="email" name="email" id="email" value="{{ old('email')}}" required>
                 <span class="inline_alert">{{ $errors->first('email') }}</span>
             </div>
 
@@ -48,7 +48,7 @@
             </div>
 
             <div class="input_group">
-                <a href="{{ route('login')}}">Already registered?</a>    
+                Already registered? <a href="{{ route('login')}}">Log In</a>    
             </div>  
 
             <button type="submit">Register</button>      

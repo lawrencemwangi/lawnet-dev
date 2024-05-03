@@ -39,12 +39,12 @@
                                 <label for="status">Status:-</label>
                                 <div class="custom_radio_buttons">
                                     <label>
-                                        <input class="option_radio" type="radio" name="featured" id="active" value="1" {{ old('status',$user->status) == '1' ? 'checked' : '' }}>
+                                        <input class="option_radio" type="radio" name="status" id="active" value="1" {{ old('status',$user->status) == '1' ? 'checked' : '' }}>
                                         <span>active</span>
                                     </label>
         
                                     <label>
-                                        <input class="option_radio" type="radio" name="featured" id="inactive" value="0" {{ old('status',$user->status) == '0' ? 'checked' : '' }}>
+                                        <input class="option_radio" type="radio" name="status" id="inactive" value="0" {{ old('status',$user->status) == '0' ? 'checked' : '' }}>
                                         <span>inacitve</span>
                                     </label>
                                 </div>
@@ -54,12 +54,12 @@
                                 <label for="user_level">User Level:-</label>
                                 <div class="custom_radio_buttons">
                                     <label>
-                                        <input class="option_radio" type="radio" name="user_level" id="user_level" value="1" {{ old('user_level', $user->user_level) == '1' ? 'checked' : '' }}>
+                                        <input class="option_radio" type="radio" name="user_level" id="admin" value="1" {{ old('user_level', $user->user_level) == '1' ? 'checked' : '' }}>
                                         <span>Admin</span>
                                     </label>
         
                                     <label>
-                                        <input class="option_radio" type="radio" name="user_level" id="user_level" value="0" {{ old('user_level', $user->user_level) == '0' ? 'checked' : '' }}>
+                                        <input class="option_radio" type="radio" name="user_level" id="user" value="0" {{ old('user_level', $user->user_level) == '0' ? 'checked' : '' }}>
                                         <span>User</span>
                                     </label>
                                 </div>

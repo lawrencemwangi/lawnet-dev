@@ -47,20 +47,19 @@
                         color: $accent-color;
                     }
                     
-                .fa-cart-plus{
-                    font-size: 1.1em;
-                    padding: 0 0.3em;
+                    .fa-cart-plus{
+                        font-size: 1.1em;
+                        padding: 0 0.3em;
 
-                    span{
-                        position: absolute;
-                        top:-0.3em;
-                        color:$price-color;
+                        span{
+                            position: absolute;
+                            top:-0.3em;
+                            color:$price-color;
+                        }
                     }
                 }
-
-                }
-
             }
+
             .profiles{
                 display: flex;
                 align-items: center;
@@ -115,9 +114,13 @@
     }
 }
 
+
+
 @media screen and (width <=726px) {
     .navbar_container{
         .nav_links{
+            display: none;
+
             ul {
                 display: none;
                 width: 50%;
@@ -159,8 +162,8 @@
             ul {
                 display: flex;
             }
-        }    
-      
+        }
+        
         .burger{
             display: block;
         }
@@ -180,6 +183,6 @@
                     transform: rotate(45deg) translate(-7px, -8px);
                 }
             }
-        }
+        }  
     }
 }

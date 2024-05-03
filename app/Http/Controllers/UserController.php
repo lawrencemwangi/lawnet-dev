@@ -62,7 +62,7 @@ class UserController extends Controller
 
         return redirect()->route('user.index')->with('success', [
             'message' => 'User details Update successfully',
-            'duration' =>$this->$alert_message_duration
+            'duration' =>$this->alert_message_duration
         ]);
     }
 

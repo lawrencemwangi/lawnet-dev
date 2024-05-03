@@ -21,15 +21,16 @@
                         <th>Description</th>
                         <th>Action</th>
                     </thead>
-                    <tbody>
+                    <tbody class="searchable">
+                        @foreach ($blogs as $blog)
                         <tr>
-                            <td>Web design</td>
-                            <td>web-design</td>
-                            <td>website</td>
-                            <td>It' a webiste for business..</td>
+                            <td>{{ $blog->title }}</td>
+                            <td>{{ $blog->slug }}</td>
+                            <td>{{ $blog->category_id }}</td>
+                            <td>{{ Illuminate\Support\Str::limit($blog->description, 20) }}</td>
                             <td>
                                 <div class="icons">
-                                    <a href="#">
+                                    <a href="{{ route('blog.edit', ['blog' => $blog]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     <a href="#">
@@ -38,6 +39,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
