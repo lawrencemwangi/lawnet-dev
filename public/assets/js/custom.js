@@ -1,13 +1,3 @@
-// modeSwitch.addEventListener("click", () => {
-//     body.classList.toggle("dark");
-//     //   document.querySelector(".mode-text").innertext=""
-
-//     if (body.classList.contains("dark")) {
-//         modeText.innerText = " Light Mode ";
-//     } else modeText.innerText = " Dark Mode ";
-// });
-
-
 //code for message duration for the system success and fail 
 (function () {
     const alertElements = document.getElementsByClassName("alert");
@@ -81,7 +71,7 @@ function deleteItem(itemId, itemName, url = null) {
 }
 
 
-// Main navbar and admin sidenav toggle
+// Main navbar toggle
 $(document).ready(function () {
     $("#burgerIcon, #toggle").click(function () {
         $("#navLinks").toggleClass("show");
@@ -91,7 +81,6 @@ $(document).ready(function () {
         );
     });
 });
-
 
 
 //Delete button toogle on typing the password 

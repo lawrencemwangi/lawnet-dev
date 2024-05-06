@@ -5,26 +5,18 @@
         <h2>Blogs</h2>
 
         <div class="blog_container">
-            {{-- <div class="categories">
-                <a href="#">UI/UX Design</a>
-                <a href="#">Wed Development</a>
-                <a href="#">Intergration services</a>
-                <a href="#">ICT consultant</a>
-                <a href="#">Software development</a>
-            </div> --}}
             <div class="blog_infor">
 
                 @foreach ($blogs as $blog)
                     <div class="blog_items">
                         <div class="image">
-                            @if ($blog->imagePath)
-                                <img src="{{ $blog->imagePath }}" alt="{{ $blog->title }}">
-
-                                @else
+                            @if ($blog->image)
+                                <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
+                            @else
                                 <img src="{{ asset('assets/images/default_image.png') }}" alt="{{ $blog->title }}"> 
                             @endif
                         </div>
-                        <h2>{{ $blog->slug }}</h2>
+                        <h2>{{ $blog->title }}</h2>
 
                         <div class="link">
                             <a href="#">{{ $blog->category_id }}</a>

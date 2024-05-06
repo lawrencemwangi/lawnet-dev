@@ -8,9 +8,12 @@
                     <h1>Update Blog</h1>
 
                     <form action="{{ route('blog.update', ['blog' => $blog ]) }}" method="post">
+                        @csrf
+                        @method('PATCH')
+                        
                         <div class="input_group">
                             <label for="title">Title</label>
-                            <input type="text" name="title" id="title" value="{{ old('title') }}">
+                            <input type="text" name="title" id="title" value="{{ old('title',$blog->title) }}">
                         </div>
 
                         <div class="input_group">
@@ -20,7 +23,7 @@
                                 <option value="">-- Select Category --</option>
 
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                    <option value="{{ $category->id }}" {{ old('category_id',$blog->category_id) == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
                                 @endforeach
                             </select>
                             <span class="inline_alert">{{ $errors->first('category_id') }}</span>
@@ -28,8 +31,16 @@
 
                         <div class="input_group">
                             <label for="description">Description</label>
-                            <textarea name="description" id="description" cols="7" rows="10">{{ old('description') }}</textarea>
+                            <textarea name="description" id="description" cols="7" rows="10">{{ old('description',$blog->description) }}</textarea>
                         </div>
+
+                        <div class="input_group">
+                            <label for="description">Select an images:</label>
+                            <input type="file" name="image"  id="image" accept="image/*" value="{{ old('image',$blog->image) }}">
+                            <span class="inline_alert">{{ $errors->first('image',$blog->image) }}</span>
+                        </div>
+
+                        <button type="submit">Update</button>
                     </form>
                 </div>
             </div>

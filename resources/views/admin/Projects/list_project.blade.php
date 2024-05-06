@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->iframe }}</td>
-                            <td>{{ $project->description }}</td>
+                            <td>{{ Illuminate\Support\str::limit($project->description, 20) }}</td>
                             <td>{{ $project->link }}</td>
                             <td>
                                 <div class="icons">

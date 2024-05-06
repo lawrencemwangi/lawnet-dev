@@ -158,17 +158,18 @@
         }
 
         .show{
-            display: block;
-            ul {
+            display: block !important;
+
+            ul{
                 display: flex;
             }
         }
-        
+
         .burger{
             display: block;
         }
 
-        .active_burger {
+        .active_burger{
             span {
                 transition: transform 0.3s ease, opacity 0.3s ease;
                 &:nth-child(1) {

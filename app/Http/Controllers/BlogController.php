@@ -49,18 +49,15 @@ class BlogController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $imagePath = $image->storeAs('upload/images', $imageName);
+            $imagePath = $image->storeAs('blog_images', $imageName, 'public');
             $blog->image = $imagePath; 
-
-        }else{
-            $blog->image = '/assets/images/default_image.png';
         }
-
+        
         $blog->save();
 
         return redirect()->route('blog.index')->with('success', [
             'message' => 'Blog Added successsfully',
-            'duration' => $this->alert_message_duration
+            'duration' => $this->alert_message_duration,
         ]);
     }
 
@@ -77,7 +74,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        return view('admin.blog.update_blog', compact('blog'));
+        $categories = Category::get()->all();
+        return view('admin.blog.update_blog', compact('blog','categories'));
     }
 
     /**
@@ -86,7 +84,19 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $validated = $request->validate([
+            'title' => 'required|string',
+            'category_id' => 'required|nullable',
+            'description' => 'required|string',
+            'image' => 'required|max:2048',
+        ]);
 
+        $validated['slug'] = str::slug($validated['title']);
+
+        $blog->update($validated);
+
+        return redirect()->route('blog.index')->with('success', [
+            'message' => 'Blog updated successfully',
+            'duration' =>$this->alert_message_duration,
         ]);
     }
 

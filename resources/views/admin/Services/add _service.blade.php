@@ -79,7 +79,7 @@
                     
                         <div class="input_group">
                             <label for="description">Description</label>
-                            <input type="text" name="description"  id="description" value="{{ old('description')}}" autofocus>
+                            <textarea name="description" id="description" cols="7" rows="10">{{ old('description') }}</textarea>
                             <span class="inline_alert">{{ $errors->first('description') }}</span>
                         </div>
 
