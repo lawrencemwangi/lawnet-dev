@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Support\str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -52,7 +53,7 @@ class BlogController extends Controller
             $imagePath = $image->storeAs('blog_images', $imageName, 'public');
             $blog->image = $imagePath; 
         }
-        
+
         $blog->save();
 
         return redirect()->route('blog.index')->with('success', [
@@ -87,8 +88,23 @@ class BlogController extends Controller
             'title' => 'required|string',
             'category_id' => 'required|nullable',
             'description' => 'required|string',
-            'image' => 'required|max:2048',
+            'image' => 'nullable|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('blog_images', $imageName, 'public');
+
+            if (Storage::exists($blog->image)) {
+                Storage::delete($blog->image);
+            }
+    
+            $validated['image'] = 'blog_images/' . $imageName;
+
+            $blog->image = $imagePath; 
+        }
+    
 
         $validated['slug'] = str::slug($validated['title']);
 

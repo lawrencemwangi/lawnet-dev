@@ -39,8 +39,8 @@
                             <td>Visible</td>
                             <td>
                                 <div class="icons">
-                                    <a href="#"><i class="fas fa-trash-alt"></i></a>
                                     <a href="#"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="#"><i class="fas fa-trash-alt"></i></a>
                                 </div>
                             </td>
                         </tr>
