@@ -18,16 +18,21 @@
                         </div>
                         <h2>{{ $blog->title }}</h2>
 
-                        <div class="link">
-                            <a href="#">{{ $blog->category_id }}</a>
-                        </div>
+                        @if (isset($categories[$blog->id]))
+                            <div class="link">
+                                <a href="#"> {{ $categories[$blog->id]->title }}</a>
+                            </div>
+                        @else
+                            <div class="link">
+                                Uncategorized 
+                            </div>
+                        @endif
 
-                        <p>{{ Illuminate\Support\Str::limit($blog->description, 85) }}
+                        <p>{{ Illuminate\Support\Str::limit($blog->description, 80) }}
                             @if (strlen($blog->description) > 85)
                                 <span id="moreContent_{{ $blog->id }}" style="display: none;">
                                     {{ substr($blog->description, 85) }}
-                                </span>
-                                <span onclick="toggleContent({{ $blog->id }})"> <a href="#">Learn More</a></span>
+                                </span><a href="{{ route('blog.show',$blog->id) }}">Learn More</a>
                             @endif
                         </p> 
                     </div>  

@@ -34,9 +34,14 @@
                                     <a href="{{ route('projects.edit',['project' => $project]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <a href="#">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
+                                    <form id="deleteForm_{{ $project->id }}" action="{{ route('projects.destroy', ['project' => $project->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+    
+                                        <a href="javascript:void(0);" onclick="deleteItem({{ $project->id }}, 'project');">
+                                            <i class="fas fa-trash-alt delete"></i>
+                                        </a>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

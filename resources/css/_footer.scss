@@ -43,6 +43,7 @@
         }
 
         .footer_social{ 
+            padding: 0.3em 0;
             h3{
                 margin-bottom: 0.9em;
             }
@@ -54,6 +55,9 @@
                     height: 25px;
                     margin: 0 0.5em;
                 }
+            }
+            p{
+                padding: 0.2em 0;
             }
         }
     }

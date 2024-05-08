@@ -33,6 +33,8 @@
                 <a href="http://wa.me/254799509242?text='Hello Lawnet developers'" target="_blank" rel="noopener noreferrer">
                     <img src="{{ asset('assets/images/whatsapp.png') }}" alt="whatapp icon">
                 </a>
+                <p>lawnetdevelopers@gmail.com</p>
+                <p>+254 799 509 242</p>
             </div>
         </div>
         <hr>

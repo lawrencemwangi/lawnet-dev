@@ -35,7 +35,7 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:100|unique:blogs',
-            'category_id' => 'required|nullable',
+            'category_id' => 'nullable',
             'description' => 'required|string',
             'image' => 'nullable|image|max:2048|mimes:jpg,jpeg,png',
         ]);
@@ -62,12 +62,23 @@ class BlogController extends Controller
         ]);
     }
 
+
+    /**
+     * Relationship between blog and categories
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
     /**
      * Display the specified resource.
      */
     public function show(Blog $blog)
     {
-        //
+        $categoryId = $blog->category_id;
+        $category = Category::find($categoryId);
+        return view('show_blog',compact('blog','category'));
     }
 
     /**
@@ -86,7 +97,7 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string',
-            'category_id' => 'required|nullable',
+            'category_id' => 'nullable',
             'description' => 'required|string',
             'image' => 'nullable|max:2048',
         ]);

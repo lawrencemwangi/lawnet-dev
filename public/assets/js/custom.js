@@ -96,24 +96,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
-
-
-
-//Blog part for the paragraph
-
-function toggleContent(blogId) {
-    var description = document.getElementById('description_' + blogId);
-    var moreContent = document.getElementById('moreContent_' + blogId);
-    var a = document.querySelector('a[data-blog-id="' + blogId + '"]');
-
-    if (moreContent.style.display === 'none') {
-        moreContent.style.display = 'inline';
-        description.style.display = 'none';
-        a.textContent = 'Show Less';
-    } else {
-        moreContent.style.display = 'none';
-        description.style.display = 'inline';
-        a.textContent = 'Learn More';
-    }
-}
