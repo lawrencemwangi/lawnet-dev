@@ -88,6 +88,11 @@
         form{
             .input_group{
                 padding: 0.5em 0;
+
+                span{
+                    font-weight: bold;
+                    font-size: 1.1em;
+                }
             }
         }
     }

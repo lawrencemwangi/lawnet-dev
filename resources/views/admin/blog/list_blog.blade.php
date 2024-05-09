@@ -33,9 +33,15 @@
                                     <a href="{{ route('blog.edit', ['blog' => $blog]) }}">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <a href="#">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
+
+                                    <form id="deleteForm_{{ $blog->id }}" action="{{ route('blog.destroy',['blog' => $blog]) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <a href="javascript:void(0);" onclick="deleteItem({{ $blog->id }}, 'blog');">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

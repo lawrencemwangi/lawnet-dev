@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             
-            //status(1-active & 0 - unactive)
+            //status(1-active & 0 - inactive)
              $table->tinyinteger('status')->default(1);
 
             //user_level(1-admin & 2-user/client)

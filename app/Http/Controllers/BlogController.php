@@ -103,20 +103,16 @@ class BlogController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $imagePath = $image->storeAs('blog_images', $imageName, 'public');
 
-            if (Storage::exists($blog->image)) {
+            if($blog->image && Storage::exists($blog->image)){
                 Storage::delete($blog->image);
             }
-    
-            $validated['image'] = 'blog_images/' . $imageName;
 
-            $blog->image = $imagePath; 
+            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $blog->image = $request->file('image')->storeAs('blog_images', $imageName, 'public');
+            $validated['image'] = 'blog_images/' . $imageName;
         }
     
-
         $validated['slug'] = str::slug($validated['title']);
 
         $blog->update($validated);
@@ -132,6 +128,15 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        if (Storage::exists($blog->image)) {
+            Storage::delete($blog->image);
+        }
+
+        $blog->delete();
+
+        return redirect()->route('blog.index')->with('success', [
+            'message' => 'Blog deleted successfully',
+            'duration' => $this->alert_message_duration,
+        ]);
     }
 }

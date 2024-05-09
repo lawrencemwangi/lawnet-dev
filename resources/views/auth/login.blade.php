@@ -12,7 +12,7 @@
             </div>
     
             <div class="input_group">
-                <label for="pasword">Password</label>
+                <label for="password">Password</label>
                 <input type="password" name="password" id="password" value="{{ old('pasword')}}" required>
                 <span class="inline_alert">{{ $errors->first('password') }}</span>
             </div>

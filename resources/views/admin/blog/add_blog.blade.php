@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="input_group">
-                            <label for="description">Select an images:</label>
+                            <label for="description">Select an images:</label><span>(2mb max)</span>
                             <input type="file" name="image"  id="image" accept="image/*" value="{{ old('image') }}">
                             <span class="inline_alert">{{ $errors->first('image') }}</span>
                         </div>
