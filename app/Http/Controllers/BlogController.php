@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::get()->all();
         return view('admin.blog.list_blog' , compact('blogs'));
     }
 
@@ -49,9 +49,9 @@ class BlogController extends Controller
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imageName = $blog->slug . '.' . $image->getClientOriginalExtension();
             $imagePath = $image->storeAs('blog_images', $imageName, 'public');
-            $blog->image = $imagePath; 
+            $blog->image = $imageName; 
         }
 
         $blog->save();
@@ -104,13 +104,13 @@ class BlogController extends Controller
 
         if ($request->hasFile('image')) {
 
-            if($blog->image && Storage::exists($blog->image)){
-                Storage::delete($blog->image);
+            if($blog->imageName && Storage::exists($blog->imageName)){
+                Storage::delete($blog->imageName);
             }
 
-            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $imageName = $blog->slug . '.' . $request->file('image')->getClientOriginalExtension();
             $blog->image = $request->file('image')->storeAs('blog_images', $imageName, 'public');
-            $validated['image'] = 'blog_images/' . $imageName;
+            $validated['image'] = $imageName;
         }
     
         $validated['slug'] = str::slug($validated['title']);
@@ -128,8 +128,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        if (Storage::exists($blog->image)) {
-            Storage::delete($blog->image);
+    
+        if ($blog->image && Storage::disk('public')->exists('blog_images/' . $blog->image)) {
+            Storage::disk('public')->delete('blog_images/' . $blog->image);
         }
 
         $blog->delete();

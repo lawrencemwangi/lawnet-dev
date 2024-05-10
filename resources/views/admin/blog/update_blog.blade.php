@@ -39,7 +39,7 @@
                             <input type="file" name="image"  id="image" accept="image/*" value="{{ old('image',$blog->image) }}">
 
                             @if ($blog->image)
-                            <img src="{{ asset('storage/' . $blog->image) }}"  width="100px"  height="100px" alt="Current Image" class="img-fluid">
+                            <img src="{{ asset('storage/blog_images/' . $blog->image) }}"  width="100px"  height="100px" alt="Current Image" class="img-fluid">
                             @endif
 
                             <span class="inline_alert">{{ $errors->first('image',$blog->image) }}</span>

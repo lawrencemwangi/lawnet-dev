@@ -12,7 +12,7 @@
             <div class="blog_show">
                 <div class="image">
                     @if ($blog->image)
-                        <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
+                        <img src="{{ asset('storage/blog_images/' . $blog->image) }}" alt="{{ $blog->title }}">
                     @else
                         <img src="{{ asset('assets/images/default_image.png') }}" alt="{{ $blog->title }}"> 
                     @endif

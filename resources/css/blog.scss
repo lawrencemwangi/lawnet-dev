@@ -89,10 +89,34 @@
             .input_group{
                 padding: 0.5em 0;
 
+                img{
+                    padding: 0.5em 0;
+                    border-radius: 8px;
+                }
+
                 span{
                     font-weight: bold;
                     font-size: 1.1em;
                 }
+            }
+        }
+    }
+}
+
+@media screen and (width <=726px) {
+    .blog_container{
+        .blog_show{
+            padding: 0.3em 0;
+
+            .image{
+                img{
+
+                    width: 100%;
+                }
+            }
+
+            .link{
+                width: 100%;
             }
         }
     }
