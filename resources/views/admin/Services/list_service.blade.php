@@ -23,20 +23,21 @@
                         <th>Description</th>
                         <th>Price(KSH)</th>
                         <th>Featured</th>
-                        <th>Duration</th>
                         <th>Status</th>
+                        <th>Duration</th>
                         <th>Action</th>
                     </thead>
                     <tbody class="searchable">
+                        @foreach ($services as $service)
                         <tr>
-                            <td>Web design</td>
-                            <td>web-design</td>
-                            <td>website</td>
-                            <td>It' a webiste for business..</td>
-                            <td>500.00</td>
-                            <td>Yes</td>
-                            <td>12 weeks</td>
-                            <td>Visible</td>
+                            <td>{{ $service->title }}</td>
+                            <td>{{ $service->slug }}</td>
+                            <td>{{ $service->category_id }}</td>
+                            <td>{{ Illuminate\Support\str::limit($service->description,15) }}</td>
+                            <td>{{ $service->price }}</td>
+                            <td>{{ $service->featured == 1 ? 'Active' : 'Inactive' }}</td>
+                            <td>{{$service->visibility == 1 ? 'Yes' : 'No'}}</td>
+                            <td>{{ $service->duration }}</td>
                             <td>
                                 <div class="icons">
                                     <a href="#"><i class="fas fa-pencil-alt"></i></a>
@@ -44,6 +45,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

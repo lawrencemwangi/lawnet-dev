@@ -33,6 +33,7 @@
                 border: 1px solid $primary-color;
                 padding:0.5em 1.5em ;
                 border-radius: 24px;
+                width: 90%;
 
                 a{
                     text-decoration: none;
@@ -41,13 +42,13 @@
                 }
 
                 &:hover{
-                    background:$accent-color;
+                    background:#e5e5e5;
                 }
             }
         }
         .btn{
             @include flex_center;
-            padding: 0.5em 0;
+            padding: 0.5em 0; 
     
             button{
                 background: $secondary-color;

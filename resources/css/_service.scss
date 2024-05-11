@@ -15,8 +15,9 @@
     }
 
     .service_content{
-        @include grid(3);
+        @include grid(4);
         padding: 0.9em;
+        gap: 1em;
 
         input{
             padding:0.5em 0.9em;

@@ -5,12 +5,11 @@
         <h2>Service</h2>
 
         <div class="service_container">
-            
-            <div class="service_content">
-                @include('partials.Product')
-                @include('partials.Product')
-                @include('partials.Product')   
-            </div>
+            @foreach ($services as $service)
+                <div class="service_content">
+                    @include('partials.Product')  
+                </div>
+            @endforeach
         </div> 
     </div>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Blog;
+use App\Models\Service;
 use App\Models\Category;
 
 class HomeController extends Controller
@@ -48,7 +49,17 @@ class HomeController extends Controller
 
     public function ServicePage()
     {
-        return view('service');
+        $services = Service::get()->all();
+        $categories = []; 
+        foreach ($services as $service) {
+            $categoryId = $service->category_id; 
+            $category = Category::find($categoryId); 
+
+            // Store the category information in the $categories array
+            $categories[$service->id] = $category;
+        }
+    
+        return view('service', compact('services','categories'));
     }
 
     public function BlogPage()

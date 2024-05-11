@@ -1,15 +1,23 @@
 <x-app-layout>
     <div class="product_items">
         <div class="product_image">
-            <img src="{{ asset('assets/images/web-design.png')}}" alt="service image">
+            <img src="{{ asset('storage/service/' . $service->image) }}" alt="service image">
         </div>
 
-        <h2>Web Design</h2>
-        <p>Crafting visually stunning, user-friendly websites that captivate audiences and 
-            elevate brands to new heights of online success.
-        </p>  
+        <h2>{{ $service->title }}</h2>
+        @if (isset($categories[$service->id]))
+            <div class="link">
+                <a href="#"> {{ $categories[$service->id]->title }}</a>
+            </div>
+        @else
+            <div class="link">
+                Uncategorized 
+            </div>
+        @endif
+
+        <p>{{ $service->description }}</p>  
         <div class="product_infor">
-            <p>Price:  <span>Ksh. 5,000</span></p>
+            <p>Price:  <span>Ksh.{{ $service->price }}</span></p>
             <a href="#">
                 <img src="{{ asset('assets/images/cart.png') }}" alt="Cart Icon">
             </a>
