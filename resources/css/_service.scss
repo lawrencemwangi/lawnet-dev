@@ -14,8 +14,26 @@
         }
     }
 
-    .service_content{
+    .categories{
+        padding: 0.5em 0; 
+           
+        a{
+            background:#e7e7e7;
+            color: $brand-color;
+            padding: 0.3em 0.5em;
+            margin: 0 0.4em;
+            border-radius: 8px;
+        }
+    }
+    
+    .service_details{
         @include grid(4);
+        grid-template-columns: 1fr;
+        padding: 0.9em 0;
+    }
+
+    .service_content{
+        @include grid(3);
         padding: 0.9em;
         gap: 1em;
 
@@ -42,6 +60,7 @@
             }
         }
     }
+
     .category_content{
         width: 30%;
         h2{

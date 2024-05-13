@@ -3,13 +3,11 @@
 
     <div class="main_container">
         <h2>Service</h2>
-
+        
         <div class="service_container">
-            @foreach ($services as $service)
-                <div class="service_content">
-                    @include('partials.Product')  
-                </div>
-            @endforeach
+            <div class="service_details">
+                @include('partials.Product')  
+            </div>
         </div> 
     </div>
 
