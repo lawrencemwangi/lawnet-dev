@@ -31,9 +31,16 @@ class HomeController extends Controller
         }
     }
 
+    // public function suspension(Request $request)
+    // {
+    //     $status = $request->session()->pull('status', null);
+
+    //     return view('home', ['status' => $status]);
+    // }
+
     public function Homepage()
     {
-        $projects = Project::all();
+        $projects = Project::get();
         return view('home', compact('projects'));
     }
 

@@ -16,7 +16,9 @@
             </div>
         @endif
 
-        <p>{{ $service->description }}</p>  
+        <p class="duration">Duration: {{ $service->duration }}</p>
+
+        <p>{{ Illuminate\Support\str::limit( $service->description, 25 ) }}</p>  
         <div class="product_infor">
             <p>Price:  <span>Ksh.{{ $service->price }}</span></p>
             <a href="#">

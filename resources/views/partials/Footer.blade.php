@@ -9,7 +9,7 @@
             <p>Kiambu, Kenya</p>
         </div>
         <div class="footer_links">
-            <h3>Links</h3>
+            <h3>Explore</h3>
             <li><a href="{{ route('about') }}">About</a></li>
             <li><a href="{{ route('service') }} ">Service</a></li>
             <li><a href="{{ route('blog') }}">Blog</a></li>

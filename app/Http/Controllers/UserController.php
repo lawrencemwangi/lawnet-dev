@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         //
     }
-
+    
     /**
      * Display the specified resource.
      */
@@ -65,6 +65,8 @@ class UserController extends Controller
             'duration' =>$this->alert_message_duration
         ]);
     }
+
+    
 
     /**
      * Remove the specified resource from storage.
