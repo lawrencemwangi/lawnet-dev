@@ -14,17 +14,21 @@
         }
     }
 
-    .categories{
-        padding: 0.5em 0; 
+    // .categories{
+    //     padding: 0.5em 0; 
+    //     @include flex_center;
+    //     justify-content: unset;
+    //     align-items: unset;
+    //     flex-direction: row;
            
-        a{
-            background:#e7e7e7;
-            color: $brand-color;
-            padding: 0.3em 0.5em;
-            margin: 0 0.4em;
-            border-radius: 8px;
-        }
-    }
+    //     a{
+    //         background:#e7e7e7;
+    //         color: $brand-color;
+    //         padding: 0.3em 0.5em;
+    //         margin: 0 0.4em;
+    //         border-radius: 8px;
+    //     }
+    // }
     
     .service_details{
         @include grid(4);

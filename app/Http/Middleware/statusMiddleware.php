@@ -1,33 +1,29 @@
 <?php
 
-// namespace App\Http\Middleware;
+namespace App\Http\Middleware;
 
-// use Closure;
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
-// use Symfony\Component\HttpFoundation\Response;
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-// class statusMiddleware
-// {
+class statusMiddleware
+{
     /**
      * Handle an incoming request.
-     *  /**
-     * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-  
-//     public function handle(Request $request, Closure $next): Response
-//     {
-//         {
-//             if (Auth::check() && Auth::user()->status !== 1) {
-//                 Auth::logout();
-//                 return redirect()->route('home')->with('status', 'inactive');
-//             }
-    
-//             return $next($request);
-//         }
-//     }
-// }
+    public function handle(Request $request, Closure $next): Response
+    {
+        if(Auth::check() && Auth::user()->status == 0){
+            Auth::logout();
+
+            return redirect()->route('inactive')->with('message',
+                'You have violated the terms and conditions of the website and for that reason 
+                you account has been suspended.Please contact the admin for assistance'
+            );
+        }
+        return $next($request);
+    }
+}
