@@ -32,7 +32,7 @@
                             @if (strlen($blog->description) > 85)
                                 <span id="moreContent_{{ $blog->id }}" style="display: none;">
                                     {{ substr($blog->description, 85) }}
-                                </span><a href="{{ route('blog.show',$blog->id) }}">Learn More</a>
+                                </span><a href="{{ route('show',$blog) }}">Learn More</a>
                             @endif
                         </p> 
                     </div>  

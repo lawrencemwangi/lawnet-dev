@@ -8,7 +8,7 @@
         <h2>{{ $service->title }}</h2>
         @if (isset($categories[$service->id]))
             <div class="link">
-                <a href="#"> {{ $categories[$service->id]->title }}</a>
+                <a href="#" class="searchable"> {{ $categories[$service->id]->title }}</a>
             </div>
         @else
             <div class="link">
@@ -21,9 +21,15 @@
         <p>{{ Illuminate\Support\str::limit( $service->description, 25 ) }}</p>  
         <div class="product_infor">
             <p>Price:  <span>Ksh.{{ $service->price }}</span></p>
-            <a href="#">
-                <img src="{{ asset('assets/images/cart.png') }}" alt="Cart Icon">
-            </a>
+            
+            <form action="{{ route('add_to_cart', $service->id) }}" method="post">
+                @csrf
+                @method('POST')
+
+                <button type="submit">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+            </form>
         </div>
     </div> 
 @endforeach

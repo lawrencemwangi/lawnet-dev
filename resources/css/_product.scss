@@ -39,8 +39,7 @@
     .product_infor{
         @include flex_center;
         justify-content: space-between;
-        padding:0.3em;
-        
+                
         img{
             width:35px;
             height:35px;
@@ -48,6 +47,17 @@
         span{
             color:$price-color;
             font-weight: bold;
+        }
+
+        form{
+            button{
+                background: none;
+                i{
+                    color: $brand-color;
+                    font-size: 1.5em;
+                }
+            }
+
         }
     }
 }

@@ -21,8 +21,11 @@
                 <li><a href="{{ route('service') }} ">Service</a></li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
-                <li><a href="{{ route('cart.index') }}"><i class="fas fa-cart-plus"><span>0</span></i></a></li>
-                
+                <li><a href="{{ route('cart') }}">
+                        <i class="fas fa-cart-plus">
+                        <span>{{ Session::get('cart_count', 0) }}</span></i>
+                    </a>
+                </li>
                 <li class="profiles">
                     @if(Auth::user())
                     <a href="{{ route('profile.edit') }}" class="profile">

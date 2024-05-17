@@ -31,13 +31,7 @@ class HomeController extends Controller
         }
     }
 
-    // public function suspension(Request $request)
-    // {
-    //     $status = $request->session()->pull('status', null);
-
-    //     return view('home', ['status' => $status]);
-    // }
-
+    
     public function Homepage()
     {
         $projects = Project::get();
@@ -56,6 +50,7 @@ class HomeController extends Controller
 
     public function ServicePage()
     {
+
         $services = Service::get()->all();
         $categories = []; 
         foreach ($services as $service) {

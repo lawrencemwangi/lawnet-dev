@@ -18,9 +18,12 @@ Route::get('/', [HomeController::class, 'HomePage'])->name('home');
 Route::get('/about', [HomeController::class, 'AboutPage'])->name('about');
 Route::get('/service', [HomeController::class, 'ServicePage'])->name('service');
 Route::get('/blog', [HomeController::class, 'BlogPage'])->name('blog');
+Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('show');
 Route::get('/contact', [HomeController::class, 'ContactPage'])->name('contact');
 Route::get('/inactive', [InactiveUserController::class, 'InactivePage'])->name('inactive');
-Route::resource('/cart', CartController::class);
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart/add/{id}',[CartController::class, 'add_to_cart'])->name('add_to_cart');
 
 
 Route::middleware('auth','status')->group(function () {
