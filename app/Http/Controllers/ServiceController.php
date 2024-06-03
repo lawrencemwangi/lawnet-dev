@@ -82,7 +82,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        $categories = Category::get()->all();
+        return view('admin.services.update_service', compact('categories', 'service'));
     }
 
     /**
@@ -90,7 +91,41 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required| string',
+            'category_id' => 'nullable',
+            'price' => 'required|string',
+            'image' => 'max:2048',
+        ]);
+
+        $service->title = $request->title;
+        $service->slug = Str::slug($request->title);
+        $service->category_id = $request->category_id;
+        $service->price = $request->price;
+        $service->discount_price = $request->discount_price;
+        $service->description = $request->description;
+        $service->featured = $request->featured;
+        $service->visibility = $request->visibility;
+        $service->duration = $request->duration;
+
+        if ($request->hasFile('image')) {
+
+            if($service->imageName && Storage::exists($service->imageName)){
+                Storage::delete($service->imageName);
+            }
+
+            $imageName = $service->slug . '.' . $request->file('image')->getClientOriginalExtension();
+            $service->image = $request->file('image')->storeAs('service', $imageName, 'public');
+            $validated['image'] = $imageName;
+        }
+
+        $service->save();
+
+        return redirect()->route('service.index')->with('success', [
+            'message' => 'Service Updated Successfully',
+            'duration' => $this->alert_message_duration,
+        ]);
+    
     }
 
     /**
@@ -98,6 +133,15 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        if ($service->image && Storage::disk('public')->exists('service/' . $service->image)) {
+            Storage::disk('public')->delete('service/' . $service->image);
+        }
+
+        $service->delete();
+
+        return redirect()->route('service.index')->with('success', [
+            'message' => 'service deleted successfully',
+            'duration' => $this->alert_message_duration,
+        ]);
     }
 }

@@ -9,6 +9,8 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\InactiveUserController;
 use Illuminate\Support\Facades\Route;
@@ -24,12 +26,18 @@ Route::get('/inactive', [InactiveUserController::class, 'InactivePage'])->name('
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add/{id}',[CartController::class, 'add_to_cart'])->name('add_to_cart');
+Route::post('cart/quatity/{id}',[CartController::class, 'change_quantity'])->name('update_cart');
+Route::post('cart/remove/{id}',[CartController::class, 'delete_cart_item'])->name('delete_cart_item');
+
+Route::get('/chat', [homecontroller::class, 'chatpage'])->name('chat');
 
 
 Route::middleware('auth','status')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/checkout', [OrderController::class, 'check_out_cart'])->name('check_out');
 });
 
 
@@ -47,6 +55,8 @@ Route::middleware('auth', 'admin','status')->group(function(){
     Route::resource('/admin/projects', ProjectController::class);
 
     Route::resource('/admin/user', UserController::class);
+
+    Route::resource('/admin/chat', ChatController::class);
 });
 
 

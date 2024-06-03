@@ -39,12 +39,12 @@
                                 <label for="status">Status:-</label>
                                 <div class="custom_radio_buttons">
                                     <label>
-                                        <input class="option_radio" type="radio" name="status" id="active" value="1" {{ old('status',$user->status) == '1' ? 'checked' : '' }}>
+                                        <input class="option_radio" type="radio" name="status" id="active" value="1" {{ old('status', $user->status) == '1' ? 'checked' : '' }}>
                                         <span>active</span>
                                     </label>
         
                                     <label>
-                                        <input class="option_radio" type="radio" name="status" id="inactive" value="0" {{ old('status',$user->status) == '0' ? 'checked' : '' }}>
+                                        <input class="option_radio" type="radio" name="status" id="inactive" value="0" {{ old('status', $user->status) == '0' ? 'checked' : '' }}>
                                         <span>inacitve</span>
                                     </label>
                                 </div>

@@ -38,3 +38,10 @@ $warning: rgb(194, 128, 5);
     margin: 0.5em 0;
     color: $success;
 }
+
+
+@media screen and (width <=726px) {
+    .alert{
+        width: 80%;
+    }
+}

@@ -15,7 +15,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart');
+        $cart = $this->calculate_cart_totals();
+        return view('cart',compact('cart'));
     }
 
 
@@ -42,7 +43,7 @@ class CartController extends Controller
             }
         }else{
 
-            //it it does exist it add a new quantity to the cart
+            //if it does not exist a new quantity is add to the cart
             $cart[$serviceId] = [
                 'id' => $service->id,
                 'title' => $service->title,
@@ -55,26 +56,74 @@ class CartController extends Controller
         Session::put('cart', $cart);
         Session::put('cart_count', array_sum(array_column($cart, 'quantity')));
 
-
+        
         return redirect()->back()->with('success', [
             'message' => 'Service add to cart successfully',
             'duration' => $this->alert_message_duration,
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Cart $cart)
+    public function Change_quantity( request $request , $serviceId )
     {
-        //
+        $request->validate([
+            'quantity' => ['required', 'numeric', 'min:1'],
+        ]);
+        
+        $cart = Sessoin::get('cart', []);
+
+        foreach($cart as &$service){
+            if($service['id'] == $serviceId){
+                $service['quantity'] = $request->input('quantity');
+
+                $service['totals'] = $service['price'] * $service['quantity'];
+                break;
+            }
+        }
+
+        Session::put('cart', $cart);
+        Session::put('cart_count', array_sum(array_column($cart, 'quantity')));
+
+        return redirect()->back()->with('success', [
+            'message' => 'Quantity updated successfully',
+            'duration' => $this->alert_message_duration,
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Cart $cart)
+    
+    public function calculate_cart_totals()
     {
-        //
+        $cart = ['items' => []];
+        $sub_total = 0;
+
+        foreach(Session::get('cart', []) as $serviceId => $item){
+            $price = $item['price'];
+
+            $item['totals'] = $item['price'] * $item['quantity'];
+            $sub_total  += $item['totals'];
+            $cart['items'] [$serviceId] =$item;
+        }
+
+        $cart['sub_total'] = $sub_total;
+
+        return $cart;
+    }
+
+
+    public function delete_cart_item( $serviceId )
+    {
+        $cart = Session::get('cart', []);
+
+        if(isset($cart[$serviceId])){
+            unset($cart[$serviceId]);
+
+            Session::put('cart', $cart);
+            Session::put('cart_count', array_sum(array_column($cart, 'quantity')));
+
+            return redirect()->route('cart')->with('success', [
+                'message' => 'service deleted from the cart successfully',
+                'duration' => $this->alert_message_duration,
+            ]);
+        }
     }
 }
+

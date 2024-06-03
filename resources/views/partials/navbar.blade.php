@@ -8,9 +8,13 @@
         <div class="nav_links" id="navLinks">
             <ul>
                 @if(Auth::user() && Auth::user()->user_level == 2)
-                <li>
-                    <a href="{{ route('home') }}">Dashboard</a>
-                </li>
+                    <li>
+                        <a href="{{ route('home') }}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('chat') }}">Chat</a>
+                    </li>
+                    
                 @elseif(Auth::user() && Auth::user()->user_level == 1)
                     <li>
                         <a href="{{ route('admin_dashboard') }}">Dashboard</a>

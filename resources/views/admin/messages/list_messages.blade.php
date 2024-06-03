@@ -6,7 +6,6 @@
             <div class="service_container">
                 <div class="service_content">
                     <h1>Messages</h1>
-                    @include('admin.partials.search')
                 </div>
                 
                 <table>

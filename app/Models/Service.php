@@ -26,4 +26,13 @@ class Service extends Model
     {
         return $this->hasMany(Service::class);
     }
+
+    public function get_image()
+    {
+        if(!empty($this->imageName)){
+            return url('storage/' . $this->imageName);
+        }else{
+            return asset('assets/images/product-placeholder.gif');
+        }
+    }
 }

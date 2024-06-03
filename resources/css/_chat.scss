@@ -1,0 +1,81 @@
+.chat_container{
+    h1{
+        padding-bottom: 0.5em;
+    }
+    .chat_content{
+        padding: 0.8em;
+        background: #d6d6d6;
+        border-radius: 12px;
+        @include flex_center;
+        align-items: unset;
+        flex-direction: column;
+        gap: 1.5em;
+        // *{border: 1px solid green}
+
+        .chat_header{
+            padding: 0.5em;
+            background: $brand-color;
+            color:$secondary-color;
+            border-radius: 12px;
+            @include flex_center;
+            gap: 0.3em;
+            flex-direction: column;
+            text-align: center;
+
+            span{
+                font-weight: 550;
+            }
+
+            .status{
+                color:green;
+                font-weight: bold;
+            }
+        }
+
+        .chat_body{
+            padding: 0.9em 0.5em;
+            position: relative;
+            margin:1em 0;  
+
+            .user_chat{
+                position: absolute;
+                top:0;
+                left:0;
+                background: #9efd9e;
+                color:$brand-color;
+                padding:0.2em 0.8em;
+                border-radius: 0  8px 8px 8px;
+
+            }
+
+            .admin_chat{
+                position: absolute;
+                top:0.9em;
+                right: 0;
+                background: $secondary-color;
+                padding:0.2em 0.5em;
+                border-radius: 8px 0 8px 8px;  
+            }
+        }
+
+        .chat_input{
+            display: grid;
+            gap: 2em;
+            grid-template-columns:auto 15%;
+
+            input, button{
+                border-radius: 8px;
+            }
+        }
+    }
+}
+
+@media screen and (width <=726px) {
+    .chat_container{
+        .chat_content{
+            .chat_input{
+                grid-template-columns: auto 25%;
+            }
+        }
+    }
+}

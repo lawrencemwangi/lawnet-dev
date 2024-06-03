@@ -10,11 +10,11 @@
         </div>  
 
         <div class="service_container">
-            @foreach ($categories as $category)
+            {{-- @foreach ($categories as $category)
                 <div class="categories">
                     <a href="#">{{$category->title}}</a>
                 </div>
-            @endforeach
+            @endforeach --}}
 
             <div class="service_details">
                 @include('partials.Product')  

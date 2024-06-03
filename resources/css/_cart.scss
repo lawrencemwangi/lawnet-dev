@@ -1,0 +1,113 @@
+.main_container{ 
+    p{
+        font-size: 1.2em;
+
+        .items{
+            padding:0 0.2em;
+            font-weight: bold;
+        }
+    }
+    
+    .cart_container{
+        display: grid;
+        margin: 1em 0;
+        grid-template-columns:auto 25%;
+        gap:2em;
+    
+        .cart_content{
+            font-size: 1.1em;
+    
+            ul{
+                padding: 0.3em 0; 
+
+                li{
+                    padding: 0.2em 0;
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    align-items: center;
+                    list-style: none;
+                    gap:0.8em;
+                    border-bottom: 1px solid $brand-color;
+    
+                    &:first-of-type {
+                        border-top: 1px solid grey;
+                    }
+    
+                    .price{
+                        font-weight: bold;
+                    }
+    
+                    .quantity{
+                        form{
+                            padding:0.2em;
+                        }
+                    }
+    
+                    .totals{
+                        color: $price-color;
+                    }
+    
+                    .delete_service{
+                        form{
+                            button{
+                                background: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .cart_checkout{
+            background: #d6d6d6;
+            padding: 0.5em;
+            border-radius: 12px;
+            height: fit-content;
+    
+            h3{
+                text-align: center;
+            }
+
+            p{
+                padding: 0.5em 0;
+                font-size: 1.1em;
+    
+                span{
+                    padding: 0 0.5em;
+                }
+                .price{
+                    font-weight: bold;
+                }
+            }
+            .check_out{
+                padding: 0.8em 0;
+
+                a{
+                    text-decoration: none;
+                    @include flex_center;
+                    padding:0.5em;
+                    color:$secondary-color;
+                    background: $brand-color;
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (width <=726px) {
+   .main_container{
+        .cart_container{
+            @include grid(2);
+            grid-template-columns: 1fr;
+
+            .cart_content{
+                font-size: 1em;
+                ul{
+                    padding: 0.3em 0 ;
+                }
+            }
+        }
+   }
+}

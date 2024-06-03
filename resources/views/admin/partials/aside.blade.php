@@ -42,6 +42,18 @@
                     </a>
                 </li>
                 <li>
+                    {{-- <a href="{{ route('chat.index') }}"> --}}
+                        <i class="fas fa-blog"></i>
+                        <span>Orders</span>
+                    {{-- </a> --}}
+                </li>
+                <li>
+                    <a href="{{ route('chat.index') }}">
+                        <i class="fas fa-blog"></i>
+                        <span>Chats</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('message.index') }}">
                         <i class="fas fa-comments"></i>
                         <span>Messages</span>

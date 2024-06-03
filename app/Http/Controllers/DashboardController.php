@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Blog;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\Order;
 
 class DashboardController extends Controller
 {
@@ -20,6 +21,7 @@ class DashboardController extends Controller
         $count_users = User::all()->count();
         $count_blogs = Blog::all()->count();
         $count_services = Service::all()->count();
+        // $count_orders = Order::all()->count();
 
 
         return view('admin/dashboard', compact(
@@ -28,7 +30,8 @@ class DashboardController extends Controller
             'count_categories',
             'count_project',
             'count_blogs',
-            'count_services'
+            'count_services',
+            // 'count_orders',
         ));
     }
 

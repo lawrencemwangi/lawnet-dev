@@ -40,8 +40,18 @@
                             <td>{{ $service->duration }}</td>
                             <td>
                                 <div class="icons">
-                                    <a href="#"><i class="fas fa-pencil-alt"></i></a>
-                                    <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="{{ route('service.edit', ['service' => $service]) }}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+
+                                    <form id="deleteForm_{{ $service->id }}" action="{{ route('service.destroy',['service' => $service]) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+    
+                                        <a href="javascript:void(0);" onclick="deleteItem({{ $service->id }}, 'service');">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

@@ -20,13 +20,6 @@
             </div>
             
             <div class="about_content">
-                <div class="founder_images">
-                    <img src="{{ asset('assets/images/mwangi.jpg')}}" alt="CEO Image">
-                    <p>Lawrence Mwangi <span>CEO & Founder</span></p>
-                    <p>Lawnet Developers</p>
-
-                </div>
-
                 <div class="about_infor">
                     <h3>Our Founder</h3>
                     <p>In 2024, Lawrence Mwangi established Lawnet Developer with the visionary goal of simplifying website design and development processes. Recognizing the complexity often
@@ -34,6 +27,12 @@
                         equip users with all the necessary tools and resources essential for creating exceptional websites. With a focus on innovation and efficiency, Lawnet Developer strives to empower 
                         individuals and businesses to achieve their online objectives effortlessly.
                     </p>
+                </div>
+
+                <div class="founder_images">
+                    <img src="{{ asset('assets/images/mwangi.jpg')}}" alt="CEO Image">
+                    <p>Lawrence Mwangi <span>CEO & Founder</span></p>
+                    <p>Lawnet Developers</p>
                 </div>
             </div>
         </div>
