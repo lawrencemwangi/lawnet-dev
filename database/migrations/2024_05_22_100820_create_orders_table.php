@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id')->unique()->constrained('users');
+            $table->string('order_number')->unique();
+            $table->string('user_id')->constrained('users')->onDelete('set null');
             $table->string('first_name');
-            
+            $table->string('last_name');
+            $table->string('phone_number');
+            $table->string('email');
+            $table->string('additional_infromation')->nullable();
+            $table->json('cart_items');
+            $table->string('status')->default('pending');
+            $table->boolean('paid')->default(false);
             $table->timestamps();
         });
     }

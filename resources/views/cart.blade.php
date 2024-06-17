@@ -9,7 +9,7 @@
             <div class="cart_content">
                 @foreach ($cart['items'] as $service)
                 <ul>
-                    <li>
+                    <li class="cart-item" data-item-id="{{ $service['id'] }}">
                         <span class="title">
                             <span>{{ $service['title']}}</span>
                         </span>
@@ -20,9 +20,10 @@
                         </span>
 
                         <span class="quantity">
-                            <form action="{{ route('update_cart', $service['id']) }}" method="post">
+                            <form class="service_form" action="{{ route('update_cart', $service['id']) }}" method="post">
                                 @csrf
-                                <input type="number" name="service_quantity" id="service_quantity" min="1" value="{{ $service['quantity'] }}" >
+                                
+                                <input type="number" class="service_quantity" name="quantity"  min="1" value="{{ $service['quantity'] }}" >
                             </form>
                         </span>
 
@@ -60,4 +61,39 @@
     </div>
 
     @include('partials.footer')
+
+    <script>   
+        $(document).ready(function() {
+            function updateTotalPrice() {
+                let grandTotal = 0;
+                $('.cart-item').each(function() {
+                    const quantity = parseInt($(this).find('.service_quantity').val());
+                    const price = parseFloat($(this).find('.total_price').text());
+                    const totalPrice = quantity * price;
+                    $(this).find('.sub_total').text(totalPrice.toFixed(2));
+                    grandTotal += totalPrice;
+                });
+                $('#cart_total').text(grandTotal.toFixed(2));
+            }
+
+            function sendUpdateRequest(item, quantity) {
+                const itemId = item.data('item-id');
+                $.ajax({
+                    url: '/change-quantity/' + itemId,
+                    method: 'POST',
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        quantity: quantity
+                    },
+                    success: function(response) {
+                        console.log('Quantity updated successfully');
+                        updateTotalPrice();
+                    },
+                    error: function() {
+                        console.log('Error updating quantity');
+                    }
+                });
+            }
+        });
+    </script>
 </x-app-layout>

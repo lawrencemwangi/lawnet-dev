@@ -8,6 +8,8 @@ use App\Models\Blog;
 use App\Models\Service;
 use App\Models\Chat;
 use App\Models\Category;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -85,5 +87,7 @@ class HomeController extends Controller
     
         return view('blog', compact('blogs','categories'));
     }
+
+  
 
 }

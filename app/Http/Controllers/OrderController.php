@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Cart;
+use Illuminate\Support\str;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -15,7 +17,16 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::get()->all();
+
+        return view('admin.orders.list_orders', compact('orders'));
+    }
+
+    public function list_orders()
+    {
+        $user = Auth::user();
+          
+        return view('dashboard');
     }
 
     public function check_out_cart()
@@ -46,27 +57,49 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function post_checkout(Request $request)
     {
-        $validated =$request->vlaidate([
-            'additional_infromation' => 'nullable|max:120',
+        $validated_data = $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone_number' => 'required|string',
+            'additional_infromation' => 'nullable|string',
         ]);
 
-        $order = new Order;
+        //generating an order_number and getting user_id
+        $order_number = 'Order/' . Str::random(5);
+        $user_id = Auth::user()->id;
 
-        $order->first_name = $request->input('first_name');
-        $order->last_name = $request->input('last_name');
-        $order->email = $request->input('email');
-        $order->phone_number = $request->input('phone_number');
-        $order->json_encode('cart');
-        $order->additional_infromation = $request->input('additional_infromation');
+        //retrieve the session
+        $cart = Session::get('cart', []);
 
-        $order->save();
+        $cart = app(CartController::class)->calculate_cart_totals();
+        $cart_total = $cart['sub_total'];
 
-        return redirect()->route('')->with('success', [
-            'message' => 'Order placed successfully',
-            'duration' => $this->alert_message_message,
-        ]);
+        //creating the Order in the database
+        $order = Order::create([
+            'order_number' => $order_number,
+            'user_id' => $user_id,
+            'first_name'=> $validated_data['first_name'],
+            'last_name' => $validated_data['last_name'],
+            'email' => $validated_data['email'],
+            'phone_number' => $validated_data['phone_number'],
+            'cart_items' => json_encode($cart),
+            'additional_infromation' => $validated_data['additional_infromation'],
+        ]); 
+
+        Session::forget('cart', $cart);
+        Session::forget('cart_count', array_sum(array_column($cart, 'quantity')));
+
+        return redirect()->route('post_order');
+    }
+
+    public function post_order()
+    {
+        $order_number = Session('order_number');
+
+        return view('post_order', compact('order_number'));
     }
 
     /**

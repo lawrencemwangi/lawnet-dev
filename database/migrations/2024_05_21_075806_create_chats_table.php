@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
-            $tble->string('message');
+            $table->string('message');
             $table->string('user_id')->nullable()->constrained('users');
 
             // 1- online && 0- offline

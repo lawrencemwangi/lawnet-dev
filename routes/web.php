@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'HomePage'])->name('home');
 Route::get('/about', [HomeController::class, 'AboutPage'])->name('about');
 Route::get('/service', [HomeController::class, 'ServicePage'])->name('service');
-Route::get('/blog', [HomeController::class, 'BlogPage'])->name('blog');
-Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('show');
 Route::get('/contact', [HomeController::class, 'ContactPage'])->name('contact');
 Route::get('/inactive', [InactiveUserController::class, 'InactivePage'])->name('inactive');
+
+Route::get('/blog', [HomeController::class, 'BlogPage'])->name('blog');
+Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('show');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart/add/{id}',[CartController::class, 'add_to_cart'])->name('add_to_cart');
@@ -38,6 +39,9 @@ Route::middleware('auth','status')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/checkout', [OrderController::class, 'check_out_cart'])->name('check_out');
+    Route::post('/order', [OrderController::class, 'post_checkout'])->name('post_checkout');
+    Route::get('/order/success', [OrderController::class, 'post_order'])->name('post_order');
+    Route::get('/dashboard', [OrderController::class, 'list_orders'])->name('list_orders');
 });
 
 
@@ -57,6 +61,8 @@ Route::middleware('auth', 'admin','status')->group(function(){
     Route::resource('/admin/user', UserController::class);
 
     Route::resource('/admin/chat', ChatController::class);
+
+    Route::resource('/admin/orders', OrderController::class);
 });
 
 

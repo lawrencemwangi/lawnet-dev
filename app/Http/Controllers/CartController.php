@@ -69,12 +69,11 @@ class CartController extends Controller
             'quantity' => ['required', 'numeric', 'min:1'],
         ]);
         
-        $cart = Sessoin::get('cart', []);
+        $cart = Session::get('cart', []);
 
         foreach($cart as &$service){
             if($service['id'] == $serviceId){
                 $service['quantity'] = $request->input('quantity');
-
                 $service['totals'] = $service['price'] * $service['quantity'];
                 break;
             }
@@ -83,7 +82,8 @@ class CartController extends Controller
         Session::put('cart', $cart);
         Session::put('cart_count', array_sum(array_column($cart, 'quantity')));
 
-        return redirect()->back()->with('success', [
+        
+        return redirect()->route('cart')->with('success', [
             'message' => 'Quantity updated successfully',
             'duration' => $this->alert_message_duration,
         ]);

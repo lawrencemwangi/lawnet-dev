@@ -4,7 +4,7 @@
     <div class="main_container">
         <h1>Check Out</h1>
         <div class="checkout_container general_content">
-            <form action="#" method="post">
+            <form action="{{ route('post_checkout') }}" method="post">
                 @csrf
 
                 <div class="group">
@@ -30,12 +30,14 @@
                     </div>
                 </div>
                 <div class="input_group">
-                    <label for="Additional_information" >Additional information</label>
-                    <input type="text" name="Additional_information"  id="Additional_information" value="{{ old('Additional_information') }}" placeholder="Enter any other information" >
+                    <label for="additional_infromation" >Additional information</label>
+                    <input type="text" name="additional_infromation"  id="additional_infromation" value="{{ old('additional_infromation') }}" placeholder="Enter any other information" >
                 </div>
+
+                <button type="submit">Complete Order</button>
             </form>
-            <button type="submit">Complete Order</button>
         </div>
     </div>
+
     @include('partials.footer')
 </x-app-layout>

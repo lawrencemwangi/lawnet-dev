@@ -42,10 +42,10 @@
                     </a>
                 </li>
                 <li>
-                    {{-- <a href="{{ route('chat.index') }}"> --}}
+                    <a href="{{ route('orders.index') }}">
                         <i class="fas fa-blog"></i>
                         <span>Orders</span>
-                    {{-- </a> --}}
+                    </a>
                 </li>
                 <li>
                     <a href="{{ route('chat.index') }}">

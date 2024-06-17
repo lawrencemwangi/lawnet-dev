@@ -39,7 +39,7 @@
     
                     .quantity{
                         form{
-                            padding:0.2em;
+                            padding:0.2em;                            
                         }
                     }
     
@@ -105,7 +105,17 @@
             .cart_content{
                 font-size: 1em;
                 ul{
-                    padding: 0.3em 0 ;
+                    padding: 0.3em 0;
+
+                    li{
+                        gap:0.6em;
+                    }
+
+                    .quantity{
+                        form{
+                            padding: 0.3em;
+                        }
+                    }
                 }
             }
         }

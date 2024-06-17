@@ -9,7 +9,7 @@
             <ul>
                 @if(Auth::user() && Auth::user()->user_level == 2)
                     <li>
-                        <a href="{{ route('home') }}">Dashboard</a>
+                        <a href="{{ route('list_orders') }}">Dashboard</a>
                     </li>
                     <li>
                         <a href="{{ route('chat') }}">Chat</a>
